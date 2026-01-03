@@ -33,7 +33,7 @@ class AuthController extends Controller
         if ($this->authService->login($username, $password)) {
             $this->redirect('/');
         } else {
-            Session::setFlash('error', 'Username atau Password salah!');
+            Session::setFlash('errorlogin', 'Username atau Password salah!');
             $this->redirect('/login');
         }
     }

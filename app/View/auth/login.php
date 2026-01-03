@@ -7,7 +7,7 @@
 
 <body>
 
-    <?php if ($error = \App\Core\Session::getFlash('error')): ?>
+    <?php if ($error = get_flash('errorlogin')): ?>
         <p style="color: red;"><?= $error ?></p>
     <?php endif; ?>
 

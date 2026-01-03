@@ -37,7 +37,13 @@ class Router
 
                 // call middleware
                 foreach ($route['middleware'] as $middleware) {
-                    $instance = new $middleware;
+                    // Pisahkan nama class dan parameter (misal: RoleMiddleware:admin,guru)
+                    $parts = explode(':', $middleware);
+                    $className = $parts[0];
+                    $arguments = isset($parts[1]) ? explode(',', $parts[1]) : [];
+
+                    // Buat instance dan kirim arguments ke constructor
+                    $instance = new $className($arguments);
                     $instance->before();
                 }
 
@@ -53,6 +59,6 @@ class Router
 
         http_response_code(404);
         View::render('errors/404');
+        exit;
     }
-
 }
