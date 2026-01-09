@@ -2,6 +2,7 @@
 
 namespace App\Middlewares;
 
+use App\Core\Helper;
 use App\Core\Middleware;
 use App\Core\Session;
 use App\Core\View;
@@ -12,7 +13,7 @@ class AuthMiddleware implements Middleware
     {
         $user = Session::get('user_id');
         if (!$user) {
-            View::render("auth/login");
+            Helper::redirect('/login');
             exit;
         }
     }

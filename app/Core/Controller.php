@@ -20,8 +20,7 @@ abstract class Controller
 
     public function redirect(string $url)
     {
-        echo base_url($url);
-        header("Location: $url");
+        header("Location: " . base_url($url));
         exit;
     }
 }

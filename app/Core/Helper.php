@@ -20,7 +20,7 @@ class Helper
         return rtrim($base_url, '/') . $path;
     }
 
-  
+
     // /**
     //  * Format Rupiah
     //  */
@@ -29,5 +29,9 @@ class Helper
         return "Rp " . number_format($angka, 0, ',', '.');
     }
 
- 
+    public static function redirect(string $url)
+    {
+        header("Location: " . self::baseUrl($url));
+        exit;
+    }
 }

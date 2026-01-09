@@ -22,7 +22,10 @@ class AuthController extends Controller
         if (Session::get('user_id')) {
             $this->redirect('/');
         }
+        $this->view('layouts/header');
         $this->view('auth/login');
+        $this->view('layouts/footer');
+
     }
 
     public function postLogin()

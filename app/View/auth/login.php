@@ -1,30 +1,28 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Login LMS</title>
-</head>
-
-<body>
-
-    <?php if ($error = get_flash('errorlogin')): ?>
-        <p style="color: red;"><?= $error ?></p>
-    <?php endif; ?>
+<?php if ($error = get_flash('errorlogin')): ?>
+    <p style="color: red;"><?= $error ?></p>
+<?php endif; ?>
 
 
-    <h2>Login LMS</h2>
-
-    <form action="<?= base_url() ?>/login" method="POST">
-        <div>
-            <label>Username</label>
-            <input type="text" name="username" required>
+<div class="bg-gradient-to-r from-blue-500 to-purple-600 h-screen flex items-center justify-center">
+    <div class="bg-white p-10 shadow shadow-black1/2 rounded-2xl">
+        <h2 class="text-center p-4 font-bold text-2xl mb-8">
+            <i class="ri-lock-2-fill"></i>
+            Login LMS
+        </h2>
+        <div class="">
+            <form action="<?= base_url() ?>/login" method="POST">
+                <div class="mb-5 relative">
+                    <label class="block text-sm">Username</label>
+                    <i class="ri-account-circle-line absolute left-3 top-6 text-gray-400"></i>
+                    <input class="border-gray-300 border text-sm rounded-2xl py-2 pl-9 pr-6" type="text" name="username" required placeholder="username...">
+                </div>
+                <div class="mb-5 relative">
+                    <label class="block text-sm">Password</label>
+                    <i class="ri-lock-password-line absolute left-3 top-6 text-gray-400"></i>
+                    <input class="border-gray-300 border text-sm rounded-2xl py-2 pl-9 pr-6" type="password" name="password" required placeholder="password...">
+                </div>
+                <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-600 w-full rounded-2xl text-white py-2">Login</button>
+            </form>
         </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
-</body>
-
-</html>
+    </div>
+</div>
