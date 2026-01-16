@@ -32,6 +32,12 @@
             <input type="time" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="form input ...">
         </div>
 
+            <!-- file-->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <input type="file" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="form input ...">
+        </div>
+
         <!-- dengan logo -->
         <div class="mb-8 relative">
             <label for="" class="text-gray-600 text-sm">Label</label>
@@ -49,6 +55,7 @@
             </div>
         </div>
 
+        
         <!-- check box -->
         <div class="mb-8 relative grid grid-cols-6 gap-4">
             <div class="flex">
@@ -67,6 +74,7 @@
             </div>
         </div>
 
+        <!-- check box custom -->
         <div class="mb-8 relative grid grid-cols-4">
             <label class="inline-flex items-center cursor-pointer group">
                 <div class="relative flex items-center">
@@ -114,7 +122,89 @@
             </label>
         </div>
 
+        <!-- radio button -->
+        <div class="mb-8 relative grid grid-cols-6 gap-4">
+            <div class="flex">
+                <input type="radio" class=" text-gray-700  bg-white mr-2.5 w" placeholder="form input ...">
+                <label for="" class="text-gray-600 text-sm">Label</label>
+            </div>
 
+            <div class="flex">
+                <input type="radio" class=" text-gray-700  bg-white mr-2.5 w" placeholder="form input ...">
+                <label for="" class="text-gray-600 text-sm">Label</label>
+            </div>
+
+            <div class="flex">
+                <input type="radio" class=" text-gray-700  bg-white mr-2.5 w" placeholder="form input ...">
+                <label for="" class="text-gray-600 text-sm">Label</label>
+            </div>
+        </div>
+
+        <!-- radio button custom -->
+        <div class="mb-8 relative grid grid-cols-6 gap-4">
+
+            <label class="flex items-center cursor-pointer group">
+                <div class="relative flex items-center">
+                    <input type="radio" name="role" value="admin"
+                        class="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-full 
+                       checked:border-blubg-blue-600 transition-all duration-200 cursor-pointer">
+
+                    <div class="absolute w-2.5 h-2.5 bg-blue-600 rounded-full left-1/2 top-1/2 
+                        -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 
+                        transition-transform duration-200 pointer-events-none"></div>
+                </div>
+                <span class="ml-2.5 text-gray-600 text-sm group-hover:text-blubg-blue-600">Admin</span>
+            </label>
+
+            <label class="flex items-center cursor-pointer group">
+                <div class="relative flex items-center">
+                    <input type="radio" name="role" value="guru"
+                        class="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-full 
+                       checked:border-blubg-blue-600 transition-all duration-200 cursor-pointer">
+
+                    <div class="absolute w-2.5 h-2.5 bg-blue-600 rounded-full left-1/2 top-1/2 
+                        -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 
+                        transition-transform duration-200 pointer-events-none"></div>
+                </div>
+                <span class="ml-2.5 text-gray-600 text-sm group-hover:text-blubg-blue-600">Guru</span>
+            </label>
+
+            <label class="flex items-center cursor-pointer group">
+                <div class="relative flex items-center">
+                    <input type="radio" name="role" value="siswa"
+                        class="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-full 
+                       checked:border-blubg-blue-600 transition-all duration-200 cursor-pointer">
+
+                    <div class="absolute w-2.5 h-2.5 bg-blue-600 rounded-full left-1/2 top-1/2 
+                        -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 
+                        transition-transform duration-200 pointer-events-none"></div>
+                </div>
+                <span class="ml-2.5 text-gray-600 text-sm group-hover:text-blubg-blue-600">Siswa</span>
+            </label>
+
+        </div>
+
+
+        <!-- switch -->
+        <div class="mb-8 relative">
+
+            <label class="relative inline-flex items-center cursor-pointer group">
+                <input type="checkbox" class="sr-only peer">
+
+                <div class="w-11 h-6 bg-gray-200 rounded-full transition-all duration-300
+                peer-checked:bg-blue-600 
+                peer-focus:ring-4 peer-focus:ring-indigo-300
+                after:content-[''] after:absolute after:top-0.5 after:left-[2px] 
+                after:bg-white after:border-gray-300 after:border after:rounded-full 
+                after:h-5 after:w-5 after:transition-all
+                peer-checked:after:translate-x-full peer-checked:after:border-white">
+                </div>
+
+                <span class="ml-3 text-sm font-medium text-gray-600 group-hover:text-blue-600 transition-colors">
+                    Aktifkan Notifikasi
+                </span>
+            </label>
+        </div>
 
     </div>
 
