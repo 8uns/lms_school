@@ -1,7 +1,7 @@
 <!-- sidebar start -->
 <div class="bg-white md:fixed hidden w-72 h-full p-4 hidden md:block shadow shadow-black1/2">
     <a href="#" class="flex items-center pb-4 mt-5">
-        <img src="https://placehold.co/32x32" alt="" class="w-10 h-10 rounded object-cover">
+        <img src="https://placehold.co/32x32" alt="" class="w-10 h-10 rounded-2xl object-cover">
         <span class="text-2xl ml-3 font-bold ">Logo</span>
     </a>
     <ul class="text-gray-600 mt-4">
@@ -9,7 +9,7 @@
             <?php if ($sidebar['sublabel']): ?>
                 <li class="mb-1 group <?= $page = $sidebar['label'] == $data['page'] ? 'active selected' : '' ?>">
                     <a href="#"
-                        class="sidebar-dropdown-toggle flex items-center py-2 px-4 hover:bg-gray-300 hover:text-gray-800 rounded group-[.active]:bg-gray-300 group-[.active]:text-gray-700">
+                        class="sidebar-dropdown-toggle flex items-center py-2 px-4 hover:bg-gray-300 hover:text-gray-800 rounded-2xl group-[.active]:bg-gray-300 group-[.active]:text-gray-700">
                         <i class="ri-group-3-fill mr-3 text-lg"></i>
                         <span class="text-sm">User</span>
                         <i class="ri-arrow-drop-right-line ml-auto text-xl group-[.active]:rotate-90"></i>
@@ -18,7 +18,7 @@
                         <?php foreach ($sidebar['sublabel'] as $sublabel): ?>
                             <li class="mb-3 group">
                                 <a href="<?= base_url($sublabel['url']) ?>"
-                                    class="text-sm flex items-center hover:bg-gray-300 hover:text-gray-800 rounded py-2 px-4 <?= $sublabel['label'] == $data['subpage'] ? 'bg-gray-300 text-gray-700' : '' ?>">
+                                    class="text-sm flex items-center hover:bg-gray-300 hover:text-gray-800 rounded-2xl py-2 px-4 <?= $sublabel['label'] == $data['subpage'] ? 'bg-gray-300 text-gray-700' : '' ?>">
                                     <span><?= $sublabel['label']  ?></span>
                                 </a>
                             </li>
@@ -28,7 +28,7 @@
             <?php else: ?>
                 <li class="mb-1 group">
                     <a href="<?= base_url($sidebar['url']) ?>"
-                        class="flex items-center py-2 px-4 hover:bg-gray-300 hover:text-gray-800 rounded group-[.active]:bg-gray-300 group-[.active]:text-gray-700">
+                        class="flex items-center py-2 px-4 hover:bg-gray-300 hover:text-gray-800 rounded-2xl group-[.active]:bg-gray-300 group-[.active]:text-gray-700">
                         <i class="<?= $sidebar['icon'] ?> mr-3 text-lg"></i>
                         <span class="text-sm"><?= $sidebar['label'] ?></span>
                     </a>

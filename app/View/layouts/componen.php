@@ -1,0 +1,123 @@
+<div class="p-20 bg-gray-100 flex justify-center min-h-screen">
+
+
+    <div class="bg-white p-10 rounded-2xl w-2xl">
+        <!-- input text -->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <input type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="text ...">
+        </div>
+
+        <!-- password -->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <input type="password" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="••••••••">
+        </div>
+
+        <!-- textarea -->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <textarea name="" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" id="" placeholder="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, itaque."></textarea>
+        </div>
+
+        <!-- tanggal -->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <input type="date" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="form input ...">
+        </div>
+
+        <!-- waktu-->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <input type="time" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="form input ...">
+        </div>
+
+        <!-- dengan logo -->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <i class="ri-search-ai-line text-gray-500 absolute left-3 top-8 "></i>
+            <input type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="form input ...">
+        </div>
+
+        <!-- dengan button -->
+        <div class="mb-8 relative">
+            <div class="flex rounded-2xl border border-gray-400 ">
+                <button type="button" class="cursor-pointer bg-gray-100 w-30 rounded-tl-2xl rounded-bl-2xl">
+                    <i class="ri-search-2-line"></i>
+                </button>
+                <input type="text" class="text-gray-700  bg-white w-full py-3 px-10 text-sm relativepy-3 rounded-tr-2xl rounded-br-2xl" placeholder="form input ...">
+            </div>
+        </div>
+
+        <!-- check box -->
+        <div class="mb-8 relative grid grid-cols-6 gap-4">
+            <div class="flex">
+                <input type="checkbox" class=" text-gray-700  bg-white mr-2.5 w" placeholder="form input ...">
+                <label for="" class="text-gray-600 text-sm">Label</label>
+            </div>
+
+            <div class="flex">
+                <input type="checkbox" class=" text-gray-700  bg-white mr-2.5 w" placeholder="form input ...">
+                <label for="" class="text-gray-600 text-sm">Label</label>
+            </div>
+
+            <div class="flex">
+                <input type="checkbox" class=" text-gray-700  bg-white mr-2.5 w" placeholder="form input ...">
+                <label for="" class="text-gray-600 text-sm">Label</label>
+            </div>
+        </div>
+
+        <div class="mb-8 relative grid grid-cols-4">
+            <label class="inline-flex items-center cursor-pointer group">
+                <div class="relative flex items-center">
+                    <input type="checkbox"
+                        class="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-md 
+                  checked:bg-blue-600 checked:border-blubg-blue-600 
+                  hover:border-indigo-400 transition-all duration-200 cursor-pointer" />
+
+                    <i class="ri-check-line absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+              text-white text-sm opacity-0 peer-checked:opacity-100 
+              pointer-events-none transition-opacity duration-200"></i>
+                </div>
+
+                <span class="ml-3 text-sm text-gray-600 group-hover:text-blubg-blue-600">Pilih User</span>
+            </label>
+
+            <label class="inline-flex items-center cursor-pointer group">
+                <div class="relative flex items-center">
+                    <input type="checkbox"
+                        class="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-md 
+                  checked:bg-blue-600 checked:border-blubg-blue-600 
+                  hover:border-indigo-400 transition-all duration-200 cursor-pointer" />
+
+                    <i class="ri-check-line absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+              text-white text-sm opacity-0 peer-checked:opacity-100 
+              pointer-events-none transition-opacity duration-200"></i>
+                </div>
+
+                <span class="ml-3 text-sm text-gray-600 group-hover:text-blubg-blue-600">Pilih User</span>
+            </label>
+
+            <label class="inline-flex items-center cursor-pointer group">
+                <div class="relative flex items-center">
+                    <input type="checkbox"
+                        class="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-md 
+                  checked:bg-blue-600 checked:border-blubg-blue-600 
+                  hover:border-indigo-400 transition-all duration-200 cursor-pointer" />
+
+                    <i class="ri-check-line absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+              text-white text-sm opacity-0 peer-checked:opacity-100 
+              pointer-events-none transition-opacity duration-200"></i>
+                </div>
+
+                <span class="ml-3 text-sm text-gray-600 group-hover:text-blubg-blue-600">Pilih User</span>
+            </label>
+        </div>
+
+
+
+    </div>
+
+
+
+</div>

@@ -3,6 +3,7 @@
 use App\Core\Router;
 use App\Controllers\SuperAdminDashboardController;
 use App\Controllers\AuthController;
+use App\Controllers\ProductController;
 use App\Controllers\RegisterController;
 use App\Middlewares\AuthMiddleware;
 use App\Middlewares\RoleMiddleware;
@@ -34,6 +35,7 @@ Router::add('GET', '/administrator/user/admin', SuperAdminDashboardController::c
 // Protected Routes (Butuh Login)
 Router::add('GET', '/', AuthController::class, 'index', [AuthMiddleware::class, RoleMiddleware::class . ':Admin,SuperAdmin,Guru,Siswa']);
 
-
+// Debug & Develop
+Router::add('GET', '/componen', ProductController::class, 'componen');
 
 Router::run();
