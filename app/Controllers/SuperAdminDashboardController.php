@@ -43,4 +43,17 @@ class SuperAdminDashboardController extends Controller
         $this->view('superadmin/user-admin', $data);
         $this->view('layouts/footer');
     }
+
+    public function createAdmin(): void
+    {
+        if ($this->userModel->create($_POST)) {
+            // Berhasil membuat admin
+            $this->redirect('/administrator/user/admin');
+        } else {
+            // Gagal membuat admin
+            $this->redirect('/administrator/user/admin');
+        }
+    }
+
+    
 }

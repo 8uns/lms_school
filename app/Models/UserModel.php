@@ -39,7 +39,7 @@ class UserModel
 
     public function getUserAdmin()
     {
-        $stmt = $this->db->prepare("SELECT * FROM users LIMIT 0,10");
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE role IN('SuperAdmin', 'Admin') LIMIT 0,10");
         $stmt->execute();
         return $stmt->fetchAll();
     }

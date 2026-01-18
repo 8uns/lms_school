@@ -32,6 +32,14 @@
             <input type="time" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="form input ...">
         </div>
 
+        <!-- select -->
+        <div class="mb-8 relative">
+            <label for="" class="text-gray-600 text-sm">Label</label>
+            <select name="" id="" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 mr-50 text-sm">
+                <option value="">Pilih</option>
+            </select>
+        </div>
+
         <!-- file-->
         <div class="mb-8 relative">
             <label for="" class="text-gray-600 text-sm">Label</label>

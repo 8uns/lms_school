@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
 
+    <script type="module" src="/assets/js/alpine.min.js"></script>
+
     <title>LMS App</title>
 </head>
 
