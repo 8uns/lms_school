@@ -1,5 +1,5 @@
 <!-- sidebar start -->
-<div class="bg-white md:fixed hidden w-72 h-full p-4 hidden md:block shadow shadow-black1/2">
+<div class="bg-white md:fixed hidden w-72 h-full p-4 hidden md:block shadow shadow-black1/2 z-50">
     <a href="#" class="flex items-center pb-4 mt-5">
         <img src="https://placehold.co/32x32" alt="" class="w-10 h-10 rounded-2xl object-cover">
         <span class="text-2xl ml-3 font-bold ">Logo</span>

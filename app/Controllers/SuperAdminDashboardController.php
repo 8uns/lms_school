@@ -55,5 +55,25 @@ class SuperAdminDashboardController extends Controller
         }
     }
 
-    
+    public function updateAdmin($id): void
+    {
+        if ($this->userModel->update($id, $_POST)) {
+            // Berhasil memperbarui admin
+            $this->redirect('/administrator/user/admin');
+        } else {
+            // Gagal membuat admin
+            $this->redirect('/administrator/user/admin');
+        }
+    }
+
+    public function deleteAdmin($id): void
+    {
+        if ($this->userModel->delete($id)) {
+            // Berhasil menghapus admin
+            $this->redirect('/administrator/user/admin');
+        } else {
+            // Gagal menghapus admin
+            $this->redirect('/administrator/user/admin');
+        }
+    }
 }

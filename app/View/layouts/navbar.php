@@ -1,5 +1,5 @@
 <!-- menu bar start-->
-<div class="py-2 px-6 bg-white flex items-center shadow shadow-black1/2 h-18 md:ml-72 sm:ml-0">
+<div class="py-2 px-6 bg-white flex items-center shadow shadow-black1/2 h-18 md:ml-72 sm:ml-0 z-50 relative">
     <button type="button" class="text-lg text-gray-600">
         <i class="ri-menu-line"></i>
     </button>

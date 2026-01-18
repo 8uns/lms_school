@@ -37,9 +37,34 @@ class UserModel
         }
     }
 
+    public function update(int $id, array $data)
+    {
+        try {
+            $stmt = $this->db->prepare("UPDATE users SET username = ?, full_name = ?, role = ? WHERE id = ?");
+            return $stmt->execute([
+                $data['username'],
+                $data['full_name'],
+                $data['role'],
+                $id 
+            ]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function delete(int $id)
+    {
+        try {
+            $stmt = $this->db->prepare("UPDATE users SET is_deleted = TRUE WHERE id = ?");
+            return $stmt->execute([$id]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     public function getUserAdmin()
     {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE role IN('SuperAdmin', 'Admin') LIMIT 0,10");
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role IN('SuperAdmin', 'Admin') LIMIT 0,10");
         $stmt->execute();
         return $stmt->fetchAll();
     }
