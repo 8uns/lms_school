@@ -1,5 +1,5 @@
 <!-- menu bar start-->
-<div class="py-2 px-6 bg-white flex items-center shadow shadow-black1/2 h-18 md:ml-72 sm:ml-0 z-50 relative">
+<div x-data class="py-2 px-6 bg-white flex items-center shadow shadow-black1/2 h-18 md:ml-72 sm:ml-0 z-50 relative">
     <button type="button" class="text-lg text-gray-600">
         <i class="ri-menu-line"></i>
     </button>
@@ -14,13 +14,15 @@
     </ul>
 
     <ul class="ml-auto flex items-center">
-        <li class="mr-1 text-gray-400 group nav-item">
+        <li class="mr-1 text-gray-400 group nav-item" x-data="{ open: false }">
             <button type="button"
-                class="dropdown-menu-toggle w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
+                @click="open = !open"
+                class="w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
                 <i class="ri-search-2-line"></i>
             </button>
             <div
-                class="dropdown-menu absolute p-4 max-w-xs w-full right-3 top-19 bg-white rounded-md border border-gray-100 hidden group-[.selected]:block shadow shadow-black1/2">
+                x-show="open"
+                class="absolute p-4 max-w-xs w-full right-3 top-19 bg-white rounded-md border border-gray-100 shadow shadow-black1/2">
                 <form action="" class="border-b border-b-gray-100">
                     <input type="text" placeholder="search..."
                         class="py-2 pr-4 pl-10 bg-gray-50 w-full border border-gray-100 rounded-md text-sm focus:border-blue-500">
@@ -29,14 +31,16 @@
             </div>
         </li>
 
-        <li class="mr-1 text-gray-400 group nav-item">
+        <li class="mr-1 text-gray-400 group nav-item" x-data="{ open: false }">
             <button type="button"
-                class="dropdown-menu-toggle w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
+                @click="open = !open"
+                class="w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
                 <i class="ri-notification-3-line"></i>
             </button>
 
             <div
-                class="dropdown-menu absolute p-4 max-w-xs w-full right-3 top-19 bg-white rounded-md border border-gray-100 hidden group-[.selected]:block shadow shadow-black1/2">
+                x-show="open"
+                class="absolute p-4 max-w-xs w-full right-3 top-19 bg-white rounded-md border border-gray-100 shadow shadow-black1/2">
                 <h6 class="text-gray-600 font-bold text-sm px-4 py-2">Notifikasi</h6>
                 <ul>
                     <li class="border-t border-b-gray-50">
@@ -71,15 +75,17 @@
             </div>
         </li>
 
-        <li class="mr-1 text-gray-400 group nav-item">
+        <li class="mr-1 text-gray-400 group nav-item" x-data="{ open: false }">
             <button type="button"
-                class="dropdown-menu-toggle w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
+                @click="open = !open"
+                class="w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
                 <!-- <img src="https://placehold.co/20x20" alt="" class="w-7 h-7 rounded-full object-cover"> -->
                 <i class="ri-account-circle-fill w-7 h-7 rounded-full text-3xl flex justify-center items-center"></i>
             </button>
 
             <div
-                class="dropdown-menu absolute p-4 max-w-xs w-full right-3 top-19 bg-white rounded-md hidden group-[.selected]:block shadow shadow-black1/2">
+                x-show="open"
+                class="absolute p-4 max-w-xs w-full right-3 top-19 bg-white rounded-md shadow shadow-black1/2">
                 <h5 class="text-gray-500 font-bold text-sm"><?= $full_name ?></h5>
                 <h6 class="text-gray-400 text-sm"><?= $role ?></h6>
 

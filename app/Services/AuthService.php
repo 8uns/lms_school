@@ -19,7 +19,7 @@ class AuthService
         $user = $this->userModel->findByUsername($username);
 
         if ($user && password_verify($password, $user['password'])) {
-            // Simpan data esensial ke session
+            session_regenerate_id(true);
             Session::set('user_id', $user['id']);
             Session::set('username', $user['username']);
             Session::set('role', $user['role']);
