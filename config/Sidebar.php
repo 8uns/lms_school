@@ -23,29 +23,62 @@ class Sidebar
                             'label' => 'Admin',
                             'url' => '/administrator/user/admin',
                         ],
-                        [
-                            'label' => 'Guru',
-                            'url' => '/administrator/user/guru',
-                        ],
-                        [
-                            'label' => 'Siswa',
-                            'url' => '/administrator/user/siswa',
-                        ],
+                        // [
+                        //     'label' => 'Guru',
+                        //     'url' => '/administrator/user/guru',
+                        // ],
+                        // [
+                        //     'label' => 'Siswa',
+                        //     'url' => '/administrator/user/siswa',
+                        // ],
                     ]
+                ],
+                // [
+                //     'label' => 'Kelas',
+                //     'url' => '/administrator/dashboard',
+                //     'icon' => 'ri-home-office-fill',
+                //     'sublabel' => false,
+                // ],
+                // [
+                //     'label' => 'Setting',
+                //     'url' => '/administrator/dashboard',
+                //     'icon' => 'ri-settings-4-fill',
+                //     'sublabel' => false,
+                // ],
+            ],
+            'Admin' => [
+                [
+                    'label' => 'Dashboard',
+                    'url' => '/admin/dashboard',
+                    'icon' => 'ri-dashboard-fill',
+                    'sublabel' => false,
+                ],
+                [
+                    'label' => 'Akun Guru',
+                    'url' => '/admin/guru',
+                    'icon' => 'ri-user-2-fill',
+                    'sublabel' => false
+                ],
+                [
+                    'label' => 'Akun Murid',
+                    'url' => '/admin/murid',
+                    'icon' => 'ri-user-5-fill',
+                    'sublabel' => false
                 ],
                 [
                     'label' => 'Kelas',
-                    'url' => '/administrator/dashboard',
-                    'icon' => 'ri-home-office-fill',
+                    'url' => '/admin/dashboard',
+                    'icon' => 'ri-home-6-fill',
                     'sublabel' => false,
                 ],
                 [
-                    'label' => 'Setting',
-                    'url' => '/administrator/dashboard',
-                    'icon' => 'ri-settings-4-fill',
+                    'label' => 'Tahun Ajaran',
+                    'url' => '/admin/dashboard',
+                    'icon' => 'ri-calendar-fill',
                     'sublabel' => false,
                 ],
             ],
+            
             // 'Guru' => [
             //     ['label' => 'Dashboard', 'url' => '/guru/dashboard', 'icon' => 'ri-dashboard-line'],
             //     ['label' => 'Materi', 'url' => '/guru/materi', 'icon' => 'ri-book-line'],

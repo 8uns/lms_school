@@ -17,6 +17,11 @@ class AuthController extends Controller
         $this->authService = new AuthService();
     }
 
+    public function index()
+    {
+        $this->redirect('/login');
+    }
+
     public function login()
     {
         if (Session::get('user_id')) {

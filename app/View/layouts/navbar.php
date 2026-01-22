@@ -1,19 +1,10 @@
 <!-- menu bar start-->
 <div x-data="{ open: false }"
     @click.away="open = false"
-    class="py-2 px-6 bg-white flex items-center shadow shadow-black1/2 h-18 md:ml-72 sm:ml-0 z-50 relative">
+    class="py-2 px-6 bg-white flex items-center border-b border-gray-300 h-18 md:ml-72 sm:ml-0 z-50 relative">
     <button type="button" class="text-lg text-gray-600">
         <i class="ri-menu-line"></i>
     </button>
-    <ul class="flex items-center ml-4 text-sm">
-        <li class="mr-2">
-            <a href="#" class="text-gray-400"><?= $page ?></a>
-        </li>
-        <?php if ($subpage): ?>
-            <li class="text-gray-400 mr-2">/</li>
-            <li class="text-gray-600 mr-2"><?= $subpage ?></li>
-        <?php endif; ?>
-    </ul>
 
     <ul class="ml-auto flex items-center">
         <li class="mr-1 text-gray-400 group nav-item">
@@ -123,3 +114,17 @@
     </ul>
 </div>
 <!-- menu bar end -->
+
+<!-- title page start -->
+<div class="bg-gray-100 py-7 px-15 md:ml-72 sm:ml-0 flex items-center justify-between">
+    <h2 class="text-xl font-bold text-gray-700"><?= $subpage == false ? $page : $subpage ?></h2>
+    <ul class="flex items-center ml-4 text-sm">
+        <li class="text-gray-400 mr-2">Home</h6>
+        <li class="text-gray-400 mr-2">
+            <i class="ri-arrow-right-s-line"></i>
+        </li>
+        <li class="mr-2">
+            <a href="#" class="text-gray-400"><?= $subpage == false ? $page : $subpage ?></a>
+        </li>
+</div>
+<!-- title page end -->

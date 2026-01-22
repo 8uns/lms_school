@@ -2,6 +2,7 @@
 
 use App\Core\Router;
 use App\Controllers\SuperAdminDashboardController;
+use App\Controllers\AdminDashboardController;
 use App\Controllers\AuthController;
 use App\Controllers\ProductController;
 use App\Controllers\RegisterController;
@@ -33,6 +34,16 @@ Router::add('GET', '/administrator/user/admin', SuperAdminDashboardController::c
 Router::add('POST', '/administrator/user/admin', SuperAdminDashboardController::class, 'createAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // create admin
 Router::add('POST', '/administrator/user/admin/([0-9]*)', SuperAdminDashboardController::class, 'updateAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // update admin
 Router::add('GET', '/administrator/user/admin/del/([0-9]*)', SuperAdminDashboardController::class, 'deleteAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // delete admin
+
+
+// Admin Dashboard
+Router::add('GET', '/admin/dashboard', AdminDashboardController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // dashboard admin
+Router::add('GET', '/admin/guru', AdminDashboardController::class, 'guru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage guru
+Router::add('POST', '/admin/guru', AdminDashboardController::class, 'createAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // create admin
+Router::add('POST', '/admin/guru/([0-9]*)', AdminDashboardController::class, 'updateAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // update admin
+Router::add('GET', '/admin/guru/del/([0-9]*)', AdminDashboardController::class, 'deleteAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // delete admin
+
+
 
 
 // Protected Routes (Butuh Login)

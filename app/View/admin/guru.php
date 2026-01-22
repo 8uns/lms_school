@@ -13,15 +13,13 @@
 
                     <div class="font-bold py-10 px-10 border-b border-gray-200 flex items-center justify-between">
                         <h6>
-                            Data Admin
+                            Data Akun Guru
                         </h6>
                         <div class="relative">
                             <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                                 <i class="ri-add-large-line"></i>
                                 Tambah Akun
                             </button>
-
-
                         </div>
                     </div>
 
@@ -34,7 +32,6 @@
                                         <th class="">No</th>
                                         <th class="">Nama Lengkap</th>
                                         <th class="">Username</th>
-                                        <th class="">Role</th>
                                         <th class="">Aksi</th>
                                     </tr>
                                 </thead>
@@ -47,7 +44,6 @@
                                             <td class="px-4 py-2"><?= $no++; ?></td>
                                             <td class="px-4 py-2"><?= $user['full_name']; ?></td>
                                             <td class="px-4 py-2"><?= $user['username']; ?></td>
-                                            <td class="px-4 py-2"><?= $user['role']; ?></td>
                                             <td class="px-4 py-2 flex justify-center gap-2">
                                                 <div class="w-auto relative">
                                                     <button

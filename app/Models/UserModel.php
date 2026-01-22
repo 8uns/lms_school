@@ -37,6 +37,12 @@ class UserModel
         }
     }
 
+    public function createGuru(array $data)
+    {
+        $data['role'] = 'Guru';
+        return $this->create($data);
+    }
+
     public function update(int $id, array $data)
     {
         try {
@@ -45,13 +51,13 @@ class UserModel
                 $data['username'],
                 $data['full_name'],
                 $data['role'],
-                $id 
+                $id
             ]);
         } catch (Exception $e) {
             return false;
         }
     }
-
+    
     public function delete(int $id)
     {
         try {
@@ -65,6 +71,12 @@ class UserModel
     public function getUserAdmin()
     {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role IN('SuperAdmin', 'Admin') LIMIT 0,10");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    public function getGuru()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role = 'Guru' LIMIT 0,10");
         $stmt->execute();
         return $stmt->fetchAll();
     }
