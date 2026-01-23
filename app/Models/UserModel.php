@@ -15,13 +15,35 @@ class UserModel
         $this->db = Database::getConnection();
     }
 
+    // get data
     public function findByUsername(string $username)
     {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE username = ? AND is_deleted = FALSE");
         $stmt->execute([$username]);
         return $stmt->fetch();
     }
+    public function getById(int $id)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ? AND is_deleted = FALSE");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+     public function getUserAdmin()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role IN('SuperAdmin', 'Admin') LIMIT 0,10");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    public function getGuru()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role = 'Guru' LIMIT 0,10");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
+
+
+    // create data
     public function create(array $data)
     {
         try {
@@ -43,6 +65,7 @@ class UserModel
         return $this->create($data);
     }
 
+    // update data
     public function update(int $id, array $data)
     {
         try {
@@ -57,7 +80,26 @@ class UserModel
             return false;
         }
     }
+    public function updateGuru(int $id, array $data)
+    {
+        $data['role'] = 'Guru';
+        return $this->update($id, $data);
+    }
+    public function updatePassword(int $id, string $newPassword)
+    {
+        try {
+            $stmt = $this->db->prepare("UPDATE users SET password = ? WHERE id = ?");
+            return $stmt->execute([
+                password_hash($newPassword, PASSWORD_DEFAULT),
+                $id
+            ]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
     
+
+    // delete data
     public function delete(int $id)
     {
         try {
@@ -67,17 +109,5 @@ class UserModel
             return false;
         }
     }
-
-    public function getUserAdmin()
-    {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role IN('SuperAdmin', 'Admin') LIMIT 0,10");
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-    public function getGuru()
-    {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role = 'Guru' LIMIT 0,10");
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+    
 }

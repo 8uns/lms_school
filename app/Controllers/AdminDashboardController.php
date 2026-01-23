@@ -43,4 +43,37 @@ class AdminDashboardController extends Controller
         $this->view('admin/guru', $data);
         $this->view('layouts/footer');
     }
+
+    public function createGuru(): void
+    {
+        if ($this->userModel->createGuru($_POST)) {
+            // Berhasil membuat admin
+            $this->redirect('/admin/guru');
+        } else {
+            // Gagal membuat admin
+            $this->redirect('/admin/guru');
+        }
+    }
+
+    public function updateGuru($id): void
+    {
+        if ($this->userModel->updateGuru($id, $_POST)) {
+            // Berhasil mengupdate guru
+            $this->redirect('/admin/guru');
+        } else {
+            // Gagal mengupdate guru
+            $this->redirect('/admin/guru');
+        }
+    }
+
+    public function deleteGuru($id): void
+    {
+        if ($this->userModel->delete($id)) {
+            // Berhasil menghapus guru
+            $this->redirect('/admin/guru');
+        } else {
+            // Gagal menghapus guru
+            $this->redirect('/admin/guru');
+        }
+    }
 }
