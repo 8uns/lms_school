@@ -67,14 +67,20 @@ class Sidebar
                 ],
                 [
                     'label' => 'Kelas',
-                    'url' => '/admin/dashboard',
+                    'url' => '/admin/kelas',
                     'icon' => 'ri-home-6-fill',
                     'sublabel' => false,
                 ],
                 [
                     'label' => 'Tahun Ajaran',
-                    'url' => '/admin/dashboard',
+                    'url' => '/admin/tahunajaran',
                     'icon' => 'ri-calendar-fill',
+                    'sublabel' => false,
+                ],
+                 [
+                    'label' => 'Mata Pelajaran',
+                    'url' => '/admin/matapelajaran',
+                    'icon' => 'ri-book-2-fill',
                     'sublabel' => false,
                 ],
             ],

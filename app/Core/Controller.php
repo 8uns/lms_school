@@ -23,4 +23,13 @@ abstract class Controller
         header("Location: " . base_url($url));
         exit;
     }
+
+    public function renderDashboard(string $page, array $data = []): void
+    {
+        $this->view('layouts/header');
+        $this->view('layouts/sidebar', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view($page, $data);
+        $this->view('layouts/footer');
+    }
 }

@@ -73,7 +73,7 @@
                 @click="open = (open === 'profile' ? false : 'profile')"
                 class="w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
                 <!-- <img src="https://placehold.co/20x20" alt="" class="w-7 h-7 rounded-full object-cover"> -->
-                <i class="ri-account-circle-fill w-7 h-7 rounded-full text-3xl flex justify-center items-center"></i>
+                <i class="ri-account-circle-2-fill w-7 h-7 rounded-full text-3xl flex justify-center items-center"></i>
             </button>
 
             <div
@@ -83,7 +83,7 @@
                 <h6 class="text-gray-400 text-sm"><?= $role ?></h6>
 
                 <ul>
-                    <li class="">
+                    <lri-account-circle-filli class="">
                         <a href="#"
                             class="text-sm flex items-center hover:bg-gray-300 hover:text-gray-800 rounded py-2 px-4 my-2">
                             <i class="ri-account-circle-line mr-3"></i>

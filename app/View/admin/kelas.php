@@ -4,8 +4,8 @@
                 modaladd: false, 
                 modaledit: false,
                 modaldel: false,
-                userdata: {user_id : '', username : '', full_name : ''}
-                 }">
+                kelas: {id : '', class_name : ''}
+            }">
     <div class="pl-15 pr-15 pb-15 pt-0">
         <div class="grid grid-cols-1 gap-6">
             <div class="bg-white rounded-2xl border border-gray-100">
@@ -13,12 +13,12 @@
 
                     <div class="font-bold py-10 px-10 border-b border-gray-200 flex items-center justify-between">
                         <h6>
-                            Data Akun Siswa
+                            Data Kelas
                         </h6>
                         <div class="relative">
                             <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                                 <i class="ri-add-large-line"></i>
-                                Tambah Akun
+                                Tambah Kelas
                             </button>
                         </div>
                     </div>
@@ -30,24 +30,22 @@
                                 <thead>
                                     <tr class="h-20">
                                         <th class="">No</th>
-                                        <th class="">Nama Lengkap</th>
-                                        <th class="">Username</th>
+                                        <th class="">Nama Kelas</th>
                                         <th class="">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    <?php foreach ($data['user'] as $user): ?>
+                                    <?php foreach ($data['kelas'] as $kelas): ?>
                                         <tr class="h-15 border-b border-t border-gray-300">
 
                                             <td class="px-4 py-2"><?= $no++; ?></td>
-                                            <td class="px-4 py-2"><?= $user['full_name']; ?></td>
-                                            <td class="px-4 py-2"><?= $user['username']; ?></td>
+                                            <td class="px-4 py-2"><?= $kelas['class_name']; ?></td>
                                             <td class="px-4 py-2 flex justify-center gap-2">
                                                 <div class="w-auto relative">
                                                     <button
                                                         @click="
-                                                    userdata = {user_id : '<?= $user['id'] ?>', username : '<?= $user['username'] ?>', full_name : '<?= $user['full_name'] ?>'}; 
+                                                    kelas = {id : '<?= $kelas['id'] ?>', class_name : '<?= $kelas['class_name'] ?>'}; 
                                                     modaledit = !modaledit
                                                     "
                                                         type="button" class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 hover:text-green-600 hover:shadow-lg active:scale-[0.98]">
@@ -58,7 +56,7 @@
                                                 <div class="w-auto relative">
                                                     <button
                                                         @click="
-                                                    userdata = {user_id : '<?= $user['id'] ?>', full_name : '<?= $user['full_name'] ?>'}; 
+                                                    kelas = {id : '<?= $kelas['id'] ?>', class_name : '<?= $kelas['class_name'] ?>'}; 
                                                     modaldel = !modaldel
                                                     "
                                                         type="button" class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-rose-700 hover:to-red-600 transition-all duration-300 hover:text-rose-600 hover:shadow-lg active:scale-[0.98]">
@@ -88,12 +86,12 @@
         </div>
     </div>
 
-    <!-- start modal form tambah user -->
-    <div class="fixed h-screen w-screen bg-black/50 left-0 top-0 z-50" x-show="modaladd">
-        <form action="<?= base_url('/admin/siswa') ?>" method="post">
-            <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.away="modaladd = false">
+    <!-- start modal form tambah-->
+    <div class="fixed inset-0 bg-black/50 z-50" x-show="modaladd">
+        <form action="<?= base_url('/admin/kelas') ?>" method="post">
+            <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.outside="modaladd = false">
                 <div class="flex justify-between">
-                    <h6 class="font-bold text-lg mb-5">Tambah Akun Siswa</h6>
+                    <h6 class="font-bold text-lg mb-5">Tambah Kelas</h6>
                     <div class="mb-8 relative">
                         <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                             <i class="ri-close-large-fill"></i>
@@ -101,20 +99,12 @@
                     </div>
                 </div>
 
-                <div class="mb-8 relative">
-                    <label for="" class="text-gray-600 text-sm">Username</label>
-                    <input required name="username" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="username ...">
-                </div>
 
                 <div class="mb-8 relative">
-                    <label for="" class="text-gray-600 text-sm">Nama Lengkap</label>
-                    <input required name="full_name" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="nama lengkap ...">
+                    <label for="" class="text-gray-600 text-sm">Nama Kelas</label>
+                    <input required name="class_name" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="nama kelas ...">
                 </div>
 
-                <div class="mb-15 relative">
-                    <label for="" class="text-gray-600 text-sm">Password</label>
-                    <input required name="password" type="password" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="••••••••">
-                </div>
 
                 <div class="mb-2 relative">
                     <button type="submit" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
@@ -124,15 +114,15 @@
             </div>
         </form>
     </div>
-    <!-- end modal form tambah user-->
+    <!-- end modal form tambah -->
 
 
-    <!-- start modal form edit user -->
-    <div class="fixed h-screen w-screen bg-black/50 left-0 top-0 z-50" x-show="modaledit">
-        <form :action="'<?= base_url('/admin/siswa') ?>/' + userdata.user_id" method="post">
-            <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.away="modaledit = false">
+    <!-- start modal form edit-->
+    <div class="fixed inset-0 bg-black/50 z-50" x-show="modaledit">
+        <form :action="'<?= base_url('/admin/kelas') ?>/' + kelas.id" method="post">
+            <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.outside="modaledit = false">
                 <div class="flex justify-between">
-                    <h6 class="font-bold text-lg mb-5" x-text="'Edit Akun ' + userdata.full_name "></h6>
+                    <h6 class="font-bold text-lg mb-5" x-text="'Edit Kelas ' + kelas.class_name "></h6>
                     <div class="mb-8 relative">
                         <button @click="modaledit = !modaledit" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                             <i class="ri-close-large-fill"></i>
@@ -141,13 +131,8 @@
                 </div>
 
                 <div class="mb-8 relative">
-                    <label for="" class="text-gray-600 text-sm">Username</label>
-                    <input x-model="userdata.username" required name="username" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="username ...">
-                </div>
-
-                <div class="mb-8 relative">
-                    <label for="" class="text-gray-600 text-sm">Nama Lengkap</label>
-                    <input x-model="userdata.full_name" required name="full_name" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="nama lengkap ...">
+                    <label for="" class="text-gray-600 text-sm">Nama Kelas</label>
+                    <input x-model="kelas.class_name" required name="class_name" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="nama lengkap ...">
                 </div>
 
                 <div class="mb-2 relative">
@@ -159,22 +144,22 @@
             </div>
         </form>
     </div>
-    <!-- end modal form edit user-->
+    <!-- end modal form edit -->
 
-    <!-- start modal delete user -->
-    <div class="fixed h-screen w-screen bg-black/50 left-0 top-0 z-50" x-show="modaldel">
-        <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.away="modaldel = false">
+    <!-- start modal delete-->
+    <div class="fixed inset-0 bg-black/50 z-50" x-show="modaldel">
+        <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.outside="modaldel = false">
             <div class="flex justify-center text-center">
                 <h6 class="text-lg mb-5 text-center">
                     Hapus Akun
-                    <span x-text="userdata.full_name" class="font-bold"></span>
+                    <span x-text="kelas.class_name" class="font-bold"></span>
                     ?
                 </h6>
             </div>
 
             <div class="flex justify-around">
                 <div class="mb-5 relative">
-                    <a :href="'<?= base_url('/admin/siswa/del') ?>/' + userdata.user_id" type="button" class="block font-bold cursor-pointer bg-gradient-to-r from-rose-600 to-red-500 w-full rounded-2xl text-white py-3 px-10 hover:from-rose-700 hover:to-red-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                    <a :href="'<?= base_url('/admin/kelas/del') ?>/' + kelas.id" type="button" class="block font-bold cursor-pointer bg-gradient-to-r from-rose-600 to-red-500 w-full rounded-2xl text-white py-3 px-10 hover:from-rose-700 hover:to-red-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                         Ya Hapus
                     </a>
                 </div>
@@ -191,6 +176,6 @@
 
         </div>
     </div>
-    <!-- end modal delete user-->
+    <!-- end modal delete -->
 </div>
 <!-- main end -->

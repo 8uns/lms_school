@@ -6,7 +6,7 @@ $subpage -> subhalaman aktif
  -->
 <div class="bg-white md:fixed hidden w-72 h-full p-4 hidden md:block z-50 border-r border-gray-300">
     <a href="#" class="flex items-center pb-4 mt-5">
-        <img src="https://placehold.co/32x32" alt="" class="w-10 h-10 rounded-2xl object-cover">
+        <img src="<?= base_url('/assets/images/kemdikbud.png') ?>" alt="" class="w-10 h-10 rounded-2xl object-cover">
         <span class="text-2xl ml-3 font-bold ">Logo</span>
     </a>
     <ul class="text-gray-600 mt-4" x-data="{ activeMenu: false }">
