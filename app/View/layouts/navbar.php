@@ -6,6 +6,10 @@
         <i class="ri-menu-line"></i>
     </button>
 
+    <h6 class="flex items-center justify-center w-full">
+        <span class="text-sm font-bold ">LMS Asemen SMP N 1 Halbar</span>
+    </h6>
+
     <ul class="ml-auto flex items-center">
         <li class="mr-1 text-gray-400 group nav-item">
             <button type="button"
