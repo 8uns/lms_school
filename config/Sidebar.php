@@ -79,7 +79,7 @@ class Sidebar
                 ],
                  [
                     'label' => 'Mata Pelajaran',
-                    'url' => '/admin/matapelajaran',
+                    'url' => '/admin/mata-pelajaran',
                     'icon' => 'ri-book-2-fill',
                     'sublabel' => false,
                 ],

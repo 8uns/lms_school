@@ -10,7 +10,6 @@ use Config\Sidebar;
 class AdminAcademicyearsController extends Controller
 {
     private AcademicyearsModel $academicYearsModel;
-    
 
     public function __construct()
     {

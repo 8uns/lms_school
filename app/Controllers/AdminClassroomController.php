@@ -10,7 +10,6 @@ use Config\Sidebar;
 class AdminClassroomController extends Controller
 {
     private ClassroomModel $classroomModel;
-    
 
     public function __construct()
     {

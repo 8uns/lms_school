@@ -11,7 +11,6 @@ class AdminSubjectController extends Controller
 {
     private SubjectModel $subjectModel;
 
-
     public function __construct()
     {
         parent::__construct();
@@ -30,7 +29,7 @@ class AdminSubjectController extends Controller
 
     public function createMataPelajaran(): void
     {
-        if ($this->academicYearsModel->create($_POST)) {
+        if ($this->subjectModel->create($_POST)) {
             // Berhasil membuat mata pelajaran
             $this->redirect('/admin/mata-pelajaran');
         } else {
@@ -41,7 +40,7 @@ class AdminSubjectController extends Controller
 
     public function updateMataPelajaran($id): void
     {
-        if ($this->academicYearsModel->update($id, $_POST)) {
+        if ($this->subjectModel->update($id, $_POST)) {
             // Berhasil mengupdate mata pelajaran
             $this->redirect('/admin/mata-pelajaran');
         } else {
@@ -52,7 +51,7 @@ class AdminSubjectController extends Controller
 
     public function deleteMataPelajaran($id): void
     {
-        if ($this->academicYearsModel->delete($id)) {
+        if ($this->subjectModel->delete($id)) {
             // Berhasil menghapus mata pelajaran
             $this->redirect('/admin/mata-pelajaran');
         } else {

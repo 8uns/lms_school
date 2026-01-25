@@ -7,6 +7,7 @@ use App\Controllers\AdminGuruController;
 use App\Controllers\AdminSiswaController;
 use App\Controllers\AdminClassroomController;
 use App\Controllers\AdminAcademicyearsController;
+use App\Controllers\AdminSubjectController;
 use App\Controllers\AuthController;
 use App\Controllers\ProductController;
 use App\Controllers\RegisterController;
@@ -68,11 +69,10 @@ Router::add('POST', '/admin/tahun-ajaran/([0-9]*)', AdminAcademicyearsController
 Router::add('GET', '/admin/tahun-ajaran/del/([0-9]*)', AdminAcademicyearsController::class, 'deleteTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete tahun ajaran
 
 // mata pelajaran management
-Router::add('GET', '/admin/mata-pelajaran', AdminDashboardController::class, 'mataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage mata pelajaran
-Router::add('POST', '/admin/mata-pelajaran', AdminDashboardController::class, 'createMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create mata pelajaran
-Router::add('POST', '/admin/mata-pelajaran/([0-9]*)', AdminDashboardController::class, 'updateMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update mata pelajaran
-Router::add('GET', '/admin/mata-pelajaran/del/([0-9]*)', AdminDashboardController::class, 'deleteMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete mata pelajaran
-
+Router::add('GET', '/admin/mata-pelajaran', AdminSubjectController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage mata pelajaran
+Router::add('POST', '/admin/mata-pelajaran', AdminSubjectController::class, 'createMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create mata pelajaran
+Router::add('POST', '/admin/mata-pelajaran/([0-9]*)', AdminSubjectController::class, 'updateMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update mata pelajaran
+Router::add('GET', '/admin/mata-pelajaran/del/([0-9]*)', AdminSubjectController::class, 'deleteMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete mata pelajaran
 
 #####// Protected Routes (Butuh Login)
 Router::add('GET', '/', AuthController::class, 'index', [AuthMiddleware::class, RoleMiddleware::class . ':Admin,SuperAdmin,Guru,Siswa']);

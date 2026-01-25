@@ -18,7 +18,7 @@ class SubjectModel
     // get data
     public function getSubjects()
     {
-        $stmt = $this->db->prepare("SELECT * FROM subjects WHERE is_deleted = 0 ORDER BY id DESC");
+        $stmt = $this->db->prepare("SELECT * FROM subjects WHERE is_deleted = 0 ORDER BY subject_name");
         $stmt->execute();
         return $stmt->fetchAll();
     }
