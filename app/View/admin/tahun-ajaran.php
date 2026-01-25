@@ -32,6 +32,7 @@
                                         <th class="">No</th>
                                         <th class="">Nama Tahun Ajaran</th>
                                         <th class="">Semester</th>
+                                        <th class="">Status</th>
                                         <th class="">Aksi</th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,7 @@
                                             <td class="px-4 py-2"><?= $no++; ?></td>
                                             <td class="px-4 py-2"><?= $tahunAjaran['year_name']; ?></td>
                                             <td class="px-4 py-2"><?= $tahunAjaran['semester']; ?></td>
+                                            <td class="px-4 py-2"><?= $tahunAjaran['is_active'] ? 'Aktif' : 'Tidak Aktif'; ?></td>
                                             <td class="px-4 py-2 flex justify-center gap-2">
                                                 <div class="w-auto relative">
                                                     <button
@@ -55,16 +57,19 @@
                                                     </button>
                                                 </div>
 
-                                                <!-- <div class="w-auto relative">
+                                                <div class="w-auto relative">
                                                     <button
                                                         @click="
                                                     tahunAjaran = {id : '<?= $tahunAjaran['id'] ?>', year_name : '<?= $tahunAjaran['year_name'] ?>', semester : '<?= $tahunAjaran['semester'] ?>'}; 
                                                     modaldel = !modaldel
                                                     "
-                                                        type="button" class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-rose-700 hover:to-red-600 transition-all duration-300 hover:text-rose-600 hover:shadow-lg active:scale-[0.98]">
+                                                        type="button"
+                                                        :disabled="<?= $tahunAjaran['is_active'] ? 'false' : 'true' ?>"
+                                                        class="<?= $tahunAjaran['is_active'] ? 'cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-rose-700 hover:to-red-600 transition-all duration-300 hover:text-rose-600 hover:shadow-lg active:scale-[0.98]' : 'cursor-not-allowed  w-full rounded-2xl py-3 px-5 text-gray-400' ?>">
                                                         <i class="ri-delete-bin-5-line"></i>
                                                     </button>
-                                                </div> -->
+                                                </div>
+                                                
                                             </td>
                                         </tr>
 
@@ -132,7 +137,7 @@
         <form :action="'<?= base_url('/admin/tahun-ajaran') ?>/' + tahunAjaran.id" method="post">
             <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.outside="modaledit = false">
                 <div class="flex justify-between">
-                    <h6 class="font-bold text-lg mb-5" x-text="'Edit Tahun Ajaran ' + tahunAjaran.year_name "></h6>
+                    <h6 class="font-bold text-lg mb-5" x-text="'Edit Tahun Ajaran ' + tahunAjaran.year_name  + ' ' + tahunAjaran.semester "></h6>
                     <div class="mb-8 relative">
                         <button @click="modaledit = !modaledit" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                             <i class="ri-close-large-fill"></i>
@@ -171,7 +176,7 @@
             <div class="flex justify-center text-center">
                 <h6 class="text-lg mb-5 text-center">
                     Hapus Akun
-                    <span x-text="tahunAjaran.year_name" class="font-bold"></span>
+                    <span x-text="tahunAjaran.year_name + ' ' + tahunAjaran.semester" class="font-bold"></span>
                     ?
                 </h6>
             </div>

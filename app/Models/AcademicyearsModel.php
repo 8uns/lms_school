@@ -18,7 +18,7 @@ class AcademicyearsModel
     // get data
     public function getAcademicYears()
     {
-        $stmt = $this->db->prepare("SELECT * FROM academic_years ORDER BY is_active DESC, id DESC");
+        $stmt = $this->db->prepare("SELECT * FROM academic_years WHERE is_deleted = 0 ORDER BY is_active DESC, id DESC");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -74,13 +74,24 @@ class AcademicyearsModel
     }
 
     // delete data
-    // public function delete(int $id)
-    // {
-    //     try {
-    //         $stmt = $this->db->prepare("UPDATE academic_years SET is_deleted = TRUE WHERE id = ?");
-    //         return $stmt->execute([$id]);
-    //     } catch (Exception $e) {
-    //         return false;
-    //     }
-    // }
+    public function delete(int $id)
+    {
+        try {
+            $this->db->beginTransaction();
+            $this->db->prepare("UPDATE academic_years SET is_deleted = 1, is_active = 0 WHERE id = ? AND is_active = 1")
+                ->execute([$id]);
+            $sql = "UPDATE academic_years SET is_active = 1 WHERE id = (
+                    SELECT id FROM (
+                        SELECT id FROM academic_years WHERE is_deleted = 0 AND is_active = 0 ORDER BY id DESC LIMIT 1
+                    ) AS t
+                )";
+            $this->db->prepare($sql)->execute();
+
+            $this->db->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            return false;
+        }
+    }
 }

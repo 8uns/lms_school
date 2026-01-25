@@ -201,14 +201,14 @@ class AdminDashboardController extends Controller
         }
     }
 
-    // public function deleteTahunAjaran($id): void
-    // {
-    //     if ($this->academicYearsModel->delete($id)) {
-    //         // Berhasil menghapus tahun ajaran
-    //         $this->redirect('/admin/tahun-ajaran');
-    //     } else {
-    //         // Gagal menghapus tahun ajaran
-    //         $this->redirect('/admin/tahun-ajaran');
-    //     }
-    // }
+    public function deleteTahunAjaran($id): void
+    {
+        if ($this->academicYearsModel->delete($id)) {
+            // Berhasil menghapus tahun ajaran
+            $this->redirect('/admin/tahun-ajaran');
+        } else {
+            // Gagal menghapus tahun ajaran
+            $this->redirect('/admin/tahun-ajaran');
+        }
+    }
 }
