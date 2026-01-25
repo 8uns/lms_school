@@ -36,7 +36,7 @@ class UserModel
     }
     public function getGuru()
     {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role = 'Guru' LIMIT 0,10");
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE is_deleted = FALSE AND role = 'Guru' ORDER BY full_name LIMIT 0,10");
         $stmt->execute();
         return $stmt->fetchAll();
     }

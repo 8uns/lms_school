@@ -3,6 +3,10 @@
 use App\Core\Router;
 use App\Controllers\SuperAdminDashboardController;
 use App\Controllers\AdminDashboardController;
+use App\Controllers\AdminGuruController;
+use App\Controllers\AdminSiswaController;
+use App\Controllers\AdminClassroomController;
+use App\Controllers\AdminAcademicyearsController;
 use App\Controllers\AuthController;
 use App\Controllers\ProductController;
 use App\Controllers\RegisterController;
@@ -40,29 +44,34 @@ Router::add('GET', '/administrator/user/admin/del/([0-9]*)', SuperAdminDashboard
 Router::add('GET', '/admin/dashboard', AdminDashboardController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // dashboard admin
 
 // guru management
-Router::add('GET', '/admin/guru', AdminDashboardController::class, 'guru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage guru
-Router::add('POST', '/admin/guru', AdminDashboardController::class, 'createGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create admin
-Router::add('POST', '/admin/guru/([0-9]*)', AdminDashboardController::class, 'updateGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update guru
-Router::add('GET', '/admin/guru/del/([0-9]*)', AdminDashboardController::class, 'deleteGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete guru
+Router::add('GET', '/admin/guru', AdminGuruController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage guru
+Router::add('POST', '/admin/guru', AdminGuruController::class, 'createGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create admin
+Router::add('POST', '/admin/guru/([0-9]*)', AdminGuruController::class, 'updateGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update guru
+Router::add('GET', '/admin/guru/del/([0-9]*)', AdminGuruController::class, 'deleteGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete guru
 
 // siswa management
-Router::add('GET', '/admin/siswa', AdminDashboardController::class, 'siswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage siswa
-Router::add('POST', '/admin/siswa', AdminDashboardController::class, 'createSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create siswa
-Router::add('POST', '/admin/siswa/([0-9]*)', AdminDashboardController::class, 'updateSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update siswa
-Router::add('GET', '/admin/siswa/del/([0-9]*)', AdminDashboardController::class, 'deleteSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete siswa
+Router::add('GET', '/admin/siswa', AdminSiswaController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage siswa
+Router::add('POST', '/admin/siswa', AdminSiswaController::class, 'createSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create siswa
+Router::add('POST', '/admin/siswa/([0-9]*)', AdminSiswaController::class, 'updateSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update siswa
+Router::add('GET', '/admin/siswa/del/([0-9]*)', AdminSiswaController::class, 'deleteSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete siswa
 
 // kelas management
-Router::add('GET', '/admin/kelas', AdminDashboardController::class, 'kelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage kelas
-Router::add('POST', '/admin/kelas', AdminDashboardController::class, 'createKelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create kelas
-Router::add('POST', '/admin/kelas/([0-9]*)', AdminDashboardController::class, 'updateKelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update kelas
-Router::add('GET', '/admin/kelas/del/([0-9]*)', AdminDashboardController::class, 'deleteKelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete kelas
+Router::add('GET', '/admin/kelas', AdminClassroomController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage kelas
+Router::add('POST', '/admin/kelas', AdminClassroomController::class, 'createKelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create kelas
+Router::add('POST', '/admin/kelas/([0-9]*)', AdminClassroomController::class, 'updateKelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update kelas
+Router::add('GET', '/admin/kelas/del/([0-9]*)', AdminClassroomController::class, 'deleteKelas', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete kelas
 
 // tahun ajaran management
-Router::add('GET', '/admin/tahun-ajaran', AdminDashboardController::class, 'tahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage tahun ajaran
-Router::add('POST', '/admin/tahun-ajaran', AdminDashboardController::class, 'createTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create tahun ajaran
-Router::add('POST', '/admin/tahun-ajaran/([0-9]*)', AdminDashboardController::class, 'updateTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update tahun ajaran
-Router::add('GET', '/admin/tahun-ajaran/del/([0-9]*)', AdminDashboardController::class, 'deleteTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete tahun ajaran
+Router::add('GET', '/admin/tahun-ajaran', AdminAcademicyearsController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage tahun ajaran
+Router::add('POST', '/admin/tahun-ajaran', AdminAcademicyearsController::class, 'createTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create tahun ajaran
+Router::add('POST', '/admin/tahun-ajaran/([0-9]*)', AdminAcademicyearsController::class, 'updateTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update tahun ajaran
+Router::add('GET', '/admin/tahun-ajaran/del/([0-9]*)', AdminAcademicyearsController::class, 'deleteTahunAjaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete tahun ajaran
 
+// mata pelajaran management
+Router::add('GET', '/admin/mata-pelajaran', AdminDashboardController::class, 'mataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage mata pelajaran
+Router::add('POST', '/admin/mata-pelajaran', AdminDashboardController::class, 'createMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create mata pelajaran
+Router::add('POST', '/admin/mata-pelajaran/([0-9]*)', AdminDashboardController::class, 'updateMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update mata pelajaran
+Router::add('GET', '/admin/mata-pelajaran/del/([0-9]*)', AdminDashboardController::class, 'deleteMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete mata pelajaran
 
 
 #####// Protected Routes (Butuh Login)
