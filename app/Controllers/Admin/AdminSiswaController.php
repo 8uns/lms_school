@@ -22,7 +22,7 @@ class AdminSiswaController extends Controller
         $data['subpage'] = false;
         $data['full_name'] = Session::get('full_name');
         $data['role'] = $_SESSION['role'];
-        $data['sidebar'] = Sidebar::get()['Admin'];
+        $data['sidebar'] = Sidebar::get()[$_SESSION['role']];
         $data['user'] = $this->userModel->getSiswa();
         $this->renderDashboard('admin/siswa', $data);
     }

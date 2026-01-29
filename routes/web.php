@@ -1,6 +1,12 @@
 <?php
 
 use App\Core\Router;
+use App\Controllers\AuthController;
+use App\Controllers\ProductController;
+use App\Controllers\RegisterController;
+use App\Middlewares\AuthMiddleware;
+use App\Middlewares\RoleMiddleware;
+
 use App\Controllers\SuperAdmin\SuperAdminDashboardController;
 use App\Controllers\Admin\AdminDashboardController;
 use App\Controllers\Admin\AdminGuruController;
@@ -8,11 +14,7 @@ use App\Controllers\Admin\AdminSiswaController;
 use App\Controllers\Admin\AdminClassroomController;
 use App\Controllers\Admin\AdminAcademicyearsController;
 use App\Controllers\Admin\AdminSubjectController;
-use App\Controllers\AuthController;
-use App\Controllers\ProductController;
-use App\Controllers\RegisterController;
-use App\Middlewares\AuthMiddleware;
-use App\Middlewares\RoleMiddleware;
+use App\Controllers\Admin\AdminTeacherassignmentsController;
 
 // Contoh Penggunaan dengan banyak data
 // Router::add(
@@ -72,6 +74,12 @@ Router::add('GET', '/admin/mata-pelajaran', AdminSubjectController::class, 'inde
 Router::add('POST', '/admin/mata-pelajaran', AdminSubjectController::class, 'createMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create mata pelajaran
 Router::add('POST', '/admin/mata-pelajaran/([0-9]*)', AdminSubjectController::class, 'updateMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update mata pelajaran
 Router::add('GET', '/admin/mata-pelajaran/del/([0-9]*)', AdminSubjectController::class, 'deleteMataPelajaran', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete mata pelajaran
+
+// penugasan guru
+Router::add('GET', '/admin/penugasan-guru', AdminTeacherassignmentsController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage mata pelajaran
+Router::add('POST', '/admin/penugasan-guru', AdminTeacherassignmentsController::class, 'createPenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create mata pelajaran
+Router::add('POST', '/admin/penugasan-guru/([0-9]*)', AdminTeacherassignmentsController::class, 'updatePenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update mata pelajaran
+Router::add('GET', '/admin/penugasan-guru/del/([0-9]*)', AdminTeacherassignmentsController::class, 'deletePenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete mata pelajaran
 
 #####// Protected Routes (Butuh Login)
 Router::add('GET', '/', AuthController::class, 'index', [AuthMiddleware::class, RoleMiddleware::class . ':Admin,SuperAdmin,Guru,Siswa']);

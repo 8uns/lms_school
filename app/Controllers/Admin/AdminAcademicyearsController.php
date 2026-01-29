@@ -22,7 +22,7 @@ class AdminAcademicyearsController extends Controller
         $data['subpage'] = false;
         $data['full_name'] = Session::get('full_name');
         $data['role'] = $_SESSION['role'];
-        $data['sidebar'] = Sidebar::get()['Admin'];
+        $data['sidebar'] = Sidebar::get()[$_SESSION['role']];
         $data['academic_years'] = $this->academicYearsModel->getAcademicYears();
         $this->renderDashboard('admin/tahun-ajaran', $data);
     

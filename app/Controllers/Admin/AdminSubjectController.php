@@ -22,7 +22,7 @@ class AdminSubjectController extends Controller
         $data['subpage'] = false;
         $data['full_name'] = Session::get('full_name');
         $data['role'] = $_SESSION['role'];
-        $data['sidebar'] = Sidebar::get()['Admin'];
+        $data['sidebar'] = Sidebar::get()[$_SESSION['role']];
         $data['subjects'] = $this->subjectModel->getSubjects();
         $this->renderDashboard('admin/mata-pelajaran', $data);
     }
