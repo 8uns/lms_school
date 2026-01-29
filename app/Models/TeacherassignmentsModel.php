@@ -45,6 +45,38 @@ class TeacherassignmentsModel
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function getTeacherAssignmentsByAcademicyear($id = 0)
+    {
+        if ($id) {
+            $stmt = $this->db->prepare("SELECT 
+                                        ta.id AS assignment_id,
+                                        ta.teacher_id,
+                                        ta.subject_id,
+                                        ta.classroom_id,
+                                        ta.academic_year_id,
+                                        u.full_name AS teacher_name,
+                                        s.subject_name,
+                                        c.class_name,
+                                        CONCAT(ay.year_name, ' (', ay.semester, ')') AS period_name,
+                                        ay.is_active AS is_current_period
+                                    FROM teacher_assignments ta
+                                    JOIN users u ON ta.teacher_id = u.id
+                                    JOIN subjects s ON ta.subject_id = s.id
+                                    JOIN classrooms c ON ta.classroom_id = c.id
+                                    JOIN academic_years ay ON ta.academic_year_id = ay.id
+                                    WHERE 
+                                        u.is_deleted = FALSE 
+                                        AND u.role = 'Guru'
+                                        AND s.is_deleted = FALSE
+                                        AND c.is_deleted = FALSE
+                                        AND ay.id = ?
+                                    ORDER BY u.full_name ASC;");
+            $stmt->execute([$id]);
+            return $stmt->fetchAll();
+        } else {
+            $this->getTeacherAssignments();
+        }
+    }
 
     public function getById(int $id)
     {
@@ -53,14 +85,14 @@ class TeacherassignmentsModel
         return $stmt->fetch();
     }
 
-   
+
     public function create(array $data)
     {
         try {
             $stmt = $this->db->prepare("INSERT INTO teacher_assignments 
                 (teacher_id, subject_id, classroom_id, academic_year_id) 
                 VALUES (?, ?, ?, ?)");
-            
+
             return $stmt->execute([
                 $data['teacher_id'],
                 $data['subject_id'],
@@ -84,7 +116,7 @@ class TeacherassignmentsModel
                 classroom_id = ?, 
                 academic_year_id = ? 
                 WHERE id = ?");
-            
+
             return $stmt->execute([
                 $data['teacher_id'],
                 $data['subject_id'],

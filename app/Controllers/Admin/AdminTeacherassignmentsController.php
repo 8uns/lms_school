@@ -28,16 +28,16 @@ class AdminTeacherassignmentsController extends Controller
         $this->subjectModel = new SubjectModel();
         $this->userModel = new UserModel();
     }
-    public function index(): void
+    public function index($academic_year_id = 0): void
     {
         $data['page'] = 'Penugasan Guru';
         $data['subpage'] = false;
         $data['full_name'] = Session::get('full_name');
         $data['role'] = $_SESSION['role'];
         $data['sidebar'] = Sidebar::get()[$_SESSION['role']];
-        $data['teacher_assignments'] = $this->teacherassignmentsModel->getTeacherAssignments();
+        $data['teacher_assignments'] = $this->teacherassignmentsModel->getTeacherAssignmentsByAcademicyear($academic_year_id);
         $data['classrooms'] = $this->classroomModel->getClass();
-        $data['academicyears'] = $this->academicYearsModel->getActiveAcademicYears();
+        $data['academicyears'] = $this->academicYearsModel->getAcademicYears();
         $data['subject'] = $this->subjectModel->getSubjects();
         $data['guru'] = $this->userModel->getGuru();
 
@@ -77,4 +77,3 @@ class AdminTeacherassignmentsController extends Controller
         }
     }
 }
-

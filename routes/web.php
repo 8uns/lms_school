@@ -77,6 +77,7 @@ Router::add('GET', '/admin/mata-pelajaran/del/([0-9]*)', AdminSubjectController:
 
 // penugasan guru
 Router::add('GET', '/admin/penugasan-guru', AdminTeacherassignmentsController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage penugasan guru
+Router::add('GET', '/admin/penugasan-guru/([0-9]*)', AdminTeacherassignmentsController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage penugasan guru
 Router::add('POST', '/admin/penugasan-guru', AdminTeacherassignmentsController::class, 'createPenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create penugasan guru
 Router::add('POST', '/admin/penugasan-guru/([0-9]*)', AdminTeacherassignmentsController::class, 'updatePenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update penugasan guru
 Router::add('GET', '/admin/penugasan-guru/del/([0-9]*)', AdminTeacherassignmentsController::class, 'deletePenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete penugasan guru

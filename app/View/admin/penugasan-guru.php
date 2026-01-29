@@ -23,12 +23,18 @@
 
                     <div class="font-bold py-10 px-10 border-b border-gray-200 flex items-center justify-between">
                         <h6>
-                            Data Akun Guru
+                            <select
+                                x-data
+                                @change="if ($event.target.value) window.location.href = $event.target.value">
+                                <?php foreach ($data['academicyears'] as $val): ?>
+                                    <option value="<?= base_url('/admin/penugasan-guru/').$val['id'] ?>">Data Penugasan Guru Tahun Ajaran <?= $val['year_name'] . ' / ' . $val['semester'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </h6>
                         <div class="relative">
                             <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                                 <i class="ri-add-large-line"></i>
-                                Tambah Akun
+                                Tambahkan
                             </button>
                         </div>
                     </div>
@@ -191,7 +197,7 @@
         <form :action="'<?= base_url('/admin/penugasan-guru') ?>/' + data.assignment_id" method="post">
             <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.away="modaledit = false">
                 <div class="flex justify-between">
-                    <h6 class="font-bold text-lg mb-5" x-text="'Edit Akun ' + data.teacher_name "></h6>
+                    <h6 class="font-bold text-lg mb-5" x-text="'Edit ' + data.teacher_name "></h6>
                     <div class="mb-8 relative">
                         <button @click="modaledit = !modaledit" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                             <i class="ri-close-large-fill"></i>
@@ -236,7 +242,7 @@
                     <select required name="academic_year_id" id="" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 mr-50 text-sm">
                         <option value="">Pilih Tahun Ajaran</option>
                         <?php foreach ($data['academicyears'] as $val): ?>
-                            <option :selected="data.academic_year_id == '<?= $val['id'] ?>'"  value="<?= $val['id'] ?>"><?= $val['year_name'] . ' ' . $val['semester'] ?></option>
+                            <option :selected="data.academic_year_id == '<?= $val['id'] ?>'" value="<?= $val['id'] ?>"><?= $val['year_name'] . ' ' . $val['semester'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
