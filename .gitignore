@@ -8,4 +8,4 @@ vendor/
 storage/
 database/seeders/
 tests/
-public/assets/remixicon/
+public/assets/css/remixicon/
