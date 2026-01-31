@@ -1,11 +1,13 @@
 <?php
 
 use App\Core\Router;
-use App\Controllers\AuthController;
-use App\Controllers\ProductController;
-use App\Controllers\RegisterController;
+
 use App\Middlewares\AuthMiddleware;
 use App\Middlewares\RoleMiddleware;
+
+use App\Controllers\Auth\AuthController;
+use App\Controllers\Auth\RegisterController;
+
 
 use App\Controllers\SuperAdmin\SuperAdminDashboardController;
 use App\Controllers\Admin\AdminDashboardController;
@@ -27,7 +29,8 @@ use App\Controllers\Admin\ComingSoonController;
 // );
 // Router::add('GET', '/products/([0-9a-zA-Z]*)/categories/([0-9a-zA-Z]*)', HomeController::class, 'categories', [AuthMiddleware::class]);
 
-// Auth & Register
+
+#####// Auth & Register
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'postLogin');
 Router::add('GET', '/register', RegisterController::class, 'register');
@@ -99,8 +102,5 @@ Router::add('GET', '/admin/rekap-data', ComingSoonController::class, 'rekap', [A
 #####// Protected Routes (Butuh Login)
 Router::add('GET', '/', AuthController::class, 'index', [AuthMiddleware::class, RoleMiddleware::class . ':Admin,SuperAdmin,Guru,Siswa']);
 
-#####// Debug & Develop
-Router::add('GET', '/componen', ProductController::class, 'componen');
-Router::add('GET', '/card', ProductController::class, 'card');
 
 Router::run();
