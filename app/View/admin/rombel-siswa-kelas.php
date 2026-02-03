@@ -110,7 +110,8 @@
                                     </div>
 
 
-                                    <div class="overflow-auto max-h-150">
+                                    <div class="overflow-auto max-h-150 bg-white border border-gray-400 mt-3 rounded-2xl text-gray-600">
+
                                         <form action="<?= base_url("/admin/rombel-siswa") ?>" method="post">
                                             <table class="w-full text-center ">
                                                 <thead>
@@ -125,11 +126,11 @@
                                                     <?php $no = 1; ?>
                                                     <input type="text" name="classroom_id" hidden value="<?= $classrooms['id'] ?>">
                                                     <input type="text" name="academic_year_id" hidden value="<?= $academic_year_id ?>">
-                                                    <?php foreach ($data['siswa'] as $val): ?>
+                                                    <?php foreach ($data['students'] as $val): ?>
                                                         <tr class="h-15 border-b border-t border-gray-300">
 
                                                             <td class="px-4 py-2"><?= $no++; ?></td>
-                                                            <td class="px-4 py-2"><?= $val['username']; ?></td>
+                                                            <td class="px-4 py-2"><?= $val['nisn']; ?></td>
                                                             <td class="px-4 py-2"><?= $val['full_name']; ?></td>
                                                             <td class="px-4 py-2 justify-center">
                                                                 <div class="w-auto text-center justify-center items-center">

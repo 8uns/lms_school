@@ -12,7 +12,7 @@ class StudentclassesModel
     {
         $this->db = Database::getConnection();
     }
-   
+
     public function getClasgetStudentCountPerClasss($academic_year_id = NULL)
     {
         $stmt = $this->db->prepare("SELECT 
@@ -25,6 +25,35 @@ class StudentclassesModel
                                     WHERE ay.id IS NULL OR ay.id = ?
                                     GROUP BY cr.id, cr.class_name;");
         $stmt->execute([$academic_year_id]);
+        return $stmt->fetchAll();
+    }
+
+    public function getStudentInClassroom($classroom_id, $academic_year_id)
+    {
+        $stmt = $this->db->prepare("SELECT
+                                        sc.id student_classe_id,
+                                        sc.student_id student_id,
+                                        u.username nisn,
+                                        u.full_name full_name
+                                    FROM student_classes sc 
+                                    JOIN classrooms cs ON sc.classroom_id=cs.id 
+                                    JOIN users u ON sc.student_id=u.id 
+                                    JOIN academic_years ay ON sc.academic_year_id=ay.id
+                                    WHERE cs.id=? AND ay.id=?");
+        $stmt->execute([$classroom_id, $academic_year_id]);
+        return $stmt->fetchAll();
+    }
+    public function getStudentDontHaveClassroom()
+    {
+        $stmt = $this->db->prepare("SELECT 
+                                        DISTINCT u.id student_id, 
+                                        u.username nisn, 
+                                        u.full_name full_name, 
+                                        sc.id 
+                                        FROM users u 
+                                        LEFT JOIN student_classes sc ON u.id=sc.student_id 
+                                        WHERE sc.id IS NULL AND u.role='Siswa';");
+        $stmt->execute([]);
         return $stmt->fetchAll();
     }
 

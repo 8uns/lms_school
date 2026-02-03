@@ -83,7 +83,7 @@
 
                                             </td> -->
                                             <td>
-                                                <a href="/admin/rombel-siswa/class/<?= $val['classroom_id'] ?>" class="block hover:text-blue-700 py-5 font-bold text-sm">
+                                                <a href="/admin/rombel-siswa/class/<?= $val['classroom_id'] ?>/ay/<?= $academic_year_id ?>" class="block hover:text-blue-700 py-5 font-bold text-sm">
                                                     <i class="ri-group-3-fill"></i>
                                                 </a>
                                             </td>

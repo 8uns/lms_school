@@ -38,9 +38,8 @@ class AdminStudentclassesController extends Controller
         $data['studentclasses'] = $this->studentclassesModel->getClasgetStudentCountPerClasss($academic_year_id);
         $data['classrooms'] = $this->classroomModel->getClass();
         $data['academic_years'] = $this->academicYearsModel->getAcademicYears();
-        // $data['subject'] = $this->subjectModel->getSubjects();
-        // $data['guru'] = $this->userModel->getGuru();
-        $data['academic_year_id'] =  $academic_year_id;
+        $data['academic_year_id'] = $this->studentclassesService->getAcademicyearId($academic_year_id);
+
 
         $this->renderDashboard('admin/rombel-siswa', $data);
     }
@@ -55,7 +54,9 @@ class AdminStudentclassesController extends Controller
         $data['sidebar'] = Sidebar::get()[$_SESSION['role']];
         $data['academic_year_id'] = $this->studentclassesService->getAcademicyearId($academic_year_id);
         $data['academic_years'] = $this->academicYearsModel->getAcademicYears();
-        $data['siswa'] = $this->userModel->getSiswa();
+        $data['studentInClass'] = $this->studentclassesModel->getStudentInClassroom($classroom_id, $academic_year_id);
+        $data['students'] = $this->studentclassesModel->getStudentDontHaveClassroom();
+
 
         $this->renderDashboard('admin/rombel-siswa-kelas', $data);
     }
