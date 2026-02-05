@@ -176,7 +176,7 @@ class Sidebar
                 ],
                 [
                     'label' => 'Dashboard',
-                    'url' => '/admin/dashboard',
+                    'url' => '/guru/dashboard',
                     'icon' => 'ri-dashboard-fill',
                     'sublabel' => false,
                 ],
@@ -187,19 +187,19 @@ class Sidebar
                 ],
                 [
                     'label' => 'Bahan Ajar',
-                    'url' => '/admin/penugasan-guru',
+                    'url' => '/guru/bahan-ajar',
                     'icon' => 'ri-info-card-fill',
                     'sublabel' => false
                 ],
                 [
                     'label' => 'Diskusi Materi',
-                    'url' => '/admin/rombel-siswa',
+                    'url' => '/guru/diskusi-materi',
                     'icon' => 'ri-group-3-fill',
                     'sublabel' => false
                 ],
                 [
                     'label' => 'Akses Perencanaan',
-                    'url' => '/admin/kurikulum-rpp',
+                    'url' => '/guru/akses-perencanaan',
                     'icon' => 'ri-book-read-fill',
                     'sublabel' => false,
                 ],
@@ -210,19 +210,19 @@ class Sidebar
                 ],
                 [
                     'label' => 'Bank Soal',
-                    'url' => '/admin/guru',
+                    'url' => '/guru/bank-soal',
                     'icon' => 'ri-user-2-fill',
                     'sublabel' => false
                 ],
                 [
                     'label' => 'Daftar Asesmen',
-                    'url' => '/admin/siswa',
+                    'url' => '/guru/daftar-asesmen',
                     'icon' => 'ri-user-5-fill',
                     'sublabel' => false
                 ],
                 [
                     'label' => 'Monitoring Ujian',
-                    'url' => '/admin/kelas',
+                    'url' => '/guru/monitoring-ujian',
                     'icon' => 'ri-home-6-fill',
                     'sublabel' => false,
                 ],
@@ -232,13 +232,13 @@ class Sidebar
                 ],
                 [
                     'label' => 'Koreksi Manual',
-                    'url' => '/admin/rekap-data',
+                    'url' => '/guru/koreksi-manual',
                     'icon' => 'ri-file-3-fill',
                     'sublabel' => false,
                 ],
                 [
                     'label' => 'Daftar Nilai',
-                    'url' => '/admin/rekap-data',
+                    'url' => '/guru/daftar-nilai',
                     'icon' => 'ri-file-3-fill',
                     'sublabel' => false,
                 ],
