@@ -16,7 +16,7 @@ class StudentclassesService
         $this->studentclassesModel = new StudentclassesModel();
     }
 
-    public function getAcademicyearId($academic_year_id = null)
+    public function getAcademicyearId($academic_year_id = NULL)
     {
 
         if (is_null($academic_year_id)) {

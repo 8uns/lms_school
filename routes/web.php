@@ -122,6 +122,8 @@ Router::add('GET', '/guru/daftar-nilai', GuruDashboardController::class, 'index'
 
 // Bank Soal
 Router::add('GET', '/guru/bank-soal', GuruBanksoalController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Guru']); // menu manage guru
+Router::add('GET', '/guru/bank-soal/ay/([0-9]*)', GuruBanksoalController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Guru']); // menu manage guru
+Router::add('GET', '/guru/bank-soal/class/([0-9]*)/ay/([0-9]*)', GuruBanksoalController::class, 'test', [AuthMiddleware::class,  RoleMiddleware::class . ':Guru']); // menu manage guru
 
 
 #####// Protected Routes (Butuh Login)
