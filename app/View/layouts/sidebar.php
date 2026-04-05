@@ -4,7 +4,7 @@ $sidebar -> daftar menu sidebar
 $page -> halaman aktif
 $subpage -> subhalaman aktif
  -->
-<div class="bg-white md:block md:fixed w-72 h-full md:p-4 py-20 z-50 border-r border-gray-300 overflow-y-auto absolute fixed" x-show="opensidebar">
+<div class="bg-white md:block md:fixed w-72 h-full md:p-4 py-20 z-50 border-r border-gray-300 overflow-y-auto absolute" x-show="opensidebar">
     <a href="#" class="items-center pb-4 mt-5 hidden md:flex">
         <img src="<?= base_url('/assets/images/kemdikbud.png') ?>" alt="" class="w-10 h-10 rounded-2xl object-cover">
         <span class="text-2xl ml-3 font-bold ">LMS Asesmen</span>
@@ -14,7 +14,7 @@ $subpage -> subhalaman aktif
             <?php if (isset($sidebar['CategoryLabel'])): ?>
                 <li class="mt-6 mb-2 relative">
                     <span class="text-xs text-gray-400 uppercase whitespace-nowrap bg-white ml-3 px-3 inline-block z-10 
-                    before:content-[''] before:inline-block before:w-[100%] before:h-px before:bg-gray-300 before:mr-4 before:align-middle before:absolute before:left-0 before:top-1/2 before:z-[-1]
+                    before:content-[''] before:inline-block before:w-full before:h-px before:bg-gray-300 before:mr-4 before:align-middle before:absolute before:left-0 before:top-1/2 before:z-[-1]
                     "><?= $sidebar['CategoryLabel'] ?></span>
                 </li>
             <?php else: ?>

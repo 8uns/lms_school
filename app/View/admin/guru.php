@@ -17,7 +17,7 @@
                             Data Akun Guru
                         </h6>
                         <div class="relative">
-                            <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
+                            <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-linear-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                                 <i class="ri-add-large-line"></i>
                                 Tambah Akun
                             </button>
@@ -107,7 +107,7 @@
                 <div class="flex justify-between">
                     <h6 class="font-bold text-lg mb-5">Tambah Akun Guru</h6>
                     <div class="mb-8 relative">
-                        <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                        <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-linear-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                             <i class="ri-close-large-fill"></i>
                         </button>
                     </div>
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="mb-2 relative">
-                    <button type="submit" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
+                    <button type="submit" class="cursor-pointer bg-linear-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                         Tambahkan
                     </button>
                 </div>
@@ -146,7 +146,7 @@
                 <div class="flex justify-between">
                     <h6 class="font-bold text-lg mb-5" x-text="'Edit Akun ' + userdata.full_name "></h6>
                     <div class="mb-8 relative">
-                        <button @click="modaledit = !modaledit" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                        <button @click="modaledit = !modaledit" type="button" class="cursor-pointer bg-linear-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                             <i class="ri-close-large-fill"></i>
                         </button>
                     </div>
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="mb-2 relative">
-                    <button type="submit" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
+                    <button type="submit" class="cursor-pointer bg-linear-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                         Update
                     </button>
                 </div>
@@ -187,7 +187,7 @@
 
             <div class="flex justify-around">
                 <div class="mb-5 relative">
-                    <a :href="'<?= base_url('/admin/guru/del') ?>/' + userdata.user_id" type="button" class="block font-bold cursor-pointer bg-gradient-to-r from-rose-600 to-red-500 w-full rounded-2xl text-white py-3 px-10 hover:from-rose-700 hover:to-red-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                    <a :href="'<?= base_url('/admin/guru/del') ?>/' + userdata.user_id" type="button" class="block font-bold cursor-pointer bg-linear-to-r from-rose-600 to-red-500 w-full rounded-2xl text-white py-3 px-10 hover:from-rose-700 hover:to-red-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                         Ya Hapus
                     </a>
                 </div>
@@ -195,7 +195,7 @@
                 <div class="mb-5 relative">
                     <button
                         @click="modaldel = !modaldel"
-                        type="button" class="cursor-pointer font-bold bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-3 px-10 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                        type="button" class="cursor-pointer font-bold bg-linear-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-3 px-10 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                         Tidak
                     </button>
                 </div>
@@ -229,7 +229,7 @@
 
             <div class="flex justify-around">
                 <div class="mb-5 relative">
-                    <a :href="'<?= base_url('/admin/guru/reset') ?>/' + userdata.user_id" type="button" class="block font-bold cursor-pointer bg-gradient-to-r from-rose-600 to-red-500 w-full rounded-2xl text-white py-3 px-10 hover:from-rose-700 hover:to-red-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                    <a :href="'<?= base_url('/admin/guru/reset') ?>/' + userdata.user_id" type="button" class="block font-bold cursor-pointer bg-linear-to-r from-rose-600 to-red-500 w-full rounded-2xl text-white py-3 px-10 hover:from-rose-700 hover:to-red-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                         Ya Reset
                     </a>
                 </div>
@@ -237,7 +237,7 @@
                 <div class="mb-5 relative">
                     <button
                         @click="modalresetpass = !modalresetpass"
-                        type="button" class="cursor-pointer font-bold bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-3 px-10 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                        type="button" class="cursor-pointer font-bold bg-linear-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-3 px-10 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                         Tidak
                     </button>
                 </div>

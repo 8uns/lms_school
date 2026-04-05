@@ -1,7 +1,7 @@
 <!-- menu bar start-->
 <div x-data="{ open: false }"
     @click.away="open = false"
-    class="py-2 px-6 bg-white flex items-center border-b border-gray-300 h-18 md:ml-72 sm:ml-0 z-50 relative fixed">
+    class="py-2 px-6 bg-white flex items-center border-b border-gray-300 h-18 md:ml-72 sm:ml-0 z-50 relative">
     <button type="button" class="text-lg text-gray-600 cursor-pointer" @click="opensidebar = !opensidebar">
         <i class="ri-menu-line"></i>
     </button>
