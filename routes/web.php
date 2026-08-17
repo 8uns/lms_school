@@ -33,6 +33,10 @@ use App\Controllers\Guru\GuruDashboardController;
 // Router::add('GET', '/products/([0-9a-zA-Z]*)/categories/([0-9a-zA-Z]*)', HomeController::class, 'categories', [AuthMiddleware::class]);
 
 
+#####// Protected Routes (Butuh Login)
+Router::add('GET', '/', AuthController::class, 'index', [AuthMiddleware::class, RoleMiddleware::class . ':Admin,SuperAdmin,Guru,Siswa']);
+
+
 #####// Auth & Register
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'postLogin');
@@ -47,6 +51,7 @@ Router::add('GET', '/administrator/dashboard', SuperAdminDashboardController::cl
 Router::add('GET', '/administrator/user/admin', SuperAdminDashboardController::class, 'userAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // menu manage user admin
 Router::add('POST', '/administrator/user/admin', SuperAdminDashboardController::class, 'createAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // create admin
 Router::add('POST', '/administrator/user/admin/([0-9]*)', SuperAdminDashboardController::class, 'updateAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // update admin
+Router::add('POST', '/administrator/user/admin/uppas/([0-9]*)', SuperAdminDashboardController::class, 'updatePassword', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // update password admin
 Router::add('GET', '/administrator/user/admin/del/([0-9]*)', SuperAdminDashboardController::class, 'deleteAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // delete admin
 
 
@@ -95,10 +100,8 @@ Router::add('GET', '/admin/penugasan-guru/del/([0-9]*)', AdminTeacherassignments
 // rombel siswa
 Router::add('GET', '/admin/rombel-siswa', AdminStudentclassesController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage rombel siswa
 Router::add('GET', '/admin/rombel-siswa/([0-9]*)', AdminStudentclassesController::class, 'index', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage rombel siswa
-
 Router::add('GET', '/admin/rombel-siswa/class/([0-9]*)/ay/([0-9]*)', AdminStudentclassesController::class, 'studentByClass', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage rombel siswa
 // Router::add('GET', '/admin/rombel-siswa/class/([0-9]*)', AdminStudentclassesController::class, 'studentByClass', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage rombel siswa
-
 Router::add('POST', '/admin/rombel-siswa', AdminStudentclassesController::class, 'createRombelSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // create rombel siswa
 // Router::add('POST', '/admin/rombel-siswa/([0-9]*)', AdminStudentclassesController::class, 'updatePenugasanGuru', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // update rombel siswa
 Router::add('GET', '/admin/rombel-siswa/del/([0-9]*)/class/([0-9]*)/ay/([0-9]*)', AdminStudentclassesController::class, 'deleteRombelSiswa', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // delete rombel siswa
@@ -126,8 +129,6 @@ Router::add('GET', '/guru/bank-soal/ay/([0-9]*)', GuruBanksoalController::class,
 Router::add('GET', '/guru/bank-soal/class/([0-9]*)/ay/([0-9]*)', GuruBanksoalController::class, 'test', [AuthMiddleware::class,  RoleMiddleware::class . ':Guru']); // menu manage guru
 
 
-#####// Protected Routes (Butuh Login)
-Router::add('GET', '/', AuthController::class, 'index', [AuthMiddleware::class, RoleMiddleware::class . ':Admin,SuperAdmin,Guru,Siswa']);
 
 
 Router::run();

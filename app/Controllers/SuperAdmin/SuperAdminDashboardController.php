@@ -66,6 +66,17 @@ class SuperAdminDashboardController extends Controller
         }
     }
 
+    public function updatePassword($id): void
+    {
+        if ($this->userModel->updatePass($id, $_POST)) {
+            // Berhasil memperbarui admin
+            $this->redirect('/administrator/user/admin');
+        } else {
+            // Gagal membuat admin
+            $this->redirect('/administrator/user/admin');
+        }
+    }
+
     public function deleteAdmin($id): void
     {
         if ($this->userModel->delete($id)) {
@@ -76,4 +87,6 @@ class SuperAdminDashboardController extends Controller
             $this->redirect('/administrator/user/admin');
         }
     }
+
+    
 }

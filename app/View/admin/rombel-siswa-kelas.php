@@ -83,7 +83,7 @@
                             </table>
 
                             <!-- start modal simpan perubahan-->
-                            <div class="fixed inset-0 bg-black/50 z-50"
+                            <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
                                 x-cloak
                                 x-show="modaladd"
                                 x-data="{ 
@@ -98,7 +98,7 @@
                                 }   ">
                                 <form action="<?= base_url("/admin/rombel-siswa") ?>" method="post">
 
-                                    <div class="relative bg-white w-[70%] mx-auto mt-40 rounded-2xl p-10" @click.outside="modaladd = false">
+                                    <div class="relative bg-white w-auto min-w-7xl rounded-2xl p-10" @click.outside="modaladd = false">
 
                                         <div class="flex justify-between items-center mb-2 border-b border-gray-200 py-2">
                                             <h6 class="text-lg mb-5 text-center items-center font-bold">
@@ -125,7 +125,7 @@
                                         </div>
 
 
-                                        <div class="overflow-auto max-h-150 bg-white border border-gray-400 mt-3 rounded-2xl text-gray-600">
+                                        <div class="overflow-auto max-h-100 bg-white border border-gray-400 mt-3 rounded-2xl text-gray-600">
 
                                             <table class="w-full text-center ">
                                                 <thead>

@@ -123,6 +123,19 @@ class UserModel
         return $this->update($id, $data);
     }
 
+    public function updatePass(int $id, array $data)
+    {
+        try {
+            $stmt = $this->db->prepare("UPDATE users SET password = ? WHERE id = ?");
+            return $stmt->execute([
+                password_hash($data['password'], PASSWORD_DEFAULT),
+                $id
+            ]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     public function resetPasswordToDefault(int $id)
     {
         try {

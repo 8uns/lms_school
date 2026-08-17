@@ -3,6 +3,7 @@
     x-data="{ 
                 modaladd: false, 
                 modaledit: false,
+                modaluppass: false,
                 modaldel: false,
                 userdata: {user_id : '', username : '', full_name : '', role : ''}
                  }">
@@ -57,6 +58,17 @@
                                                     "
                                                         type="button" class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 hover:shadow-lg active:scale-[0.98]">
                                                         <i class="ri-edit-2-line"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="w-auto relative">
+                                                    <button
+                                                        @click="
+                                                    userdata = {user_id : '<?= $user['id'] ?>', username : '<?= $user['username'] ?>', full_name : '<?= $user['full_name'] ?>', role : '<?= $user['role'] ?>'}; 
+                                                    modaluppass = !modaluppass
+                                                    "
+                                                        type="button" class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 hover:shadow-lg active:scale-[0.98]">
+                                                        <i class="ri-lock-password-line"></i>
                                                     </button>
                                                 </div>
 
@@ -184,9 +196,42 @@
     </div>
     <!-- end modal form edit user-->
 
+
+    <!-- start modal form edit password -->
+    <div class="fixed h-screen w-screen bg-black/50 left-0 top-0 z-50" x-cloak x-show="modaluppass">
+        <form :action="'<?= base_url('/administrator/user/admin/uppas') ?>/' + userdata.user_id" method="post">
+            <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.away="modaluppass = false">
+                <div class="flex justify-between">
+                    <h6 class="font-bold text-lg mb-5" x-text="'Edit Password ' + userdata.full_name "></h6>
+                    <div class="mb-8 relative">
+                        <button @click="modaluppass = !modaluppass" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
+                            <i class="ri-close-large-fill"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-8 relative">
+                    <label for="" class="text-gray-600 text-sm">Password</label>
+                    <input x-model="userdata.password" required name="password" type="password" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="Password ...">
+                </div>
+
+
+                <div class="mb-2 relative">
+                    <button type="submit" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
+                        Update
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!-- end modal form edit password-->
+
+
+
     <!-- start modal delete user -->
     <div class="fixed h-screen w-screen bg-black/50 left-0 top-0 z-50" x-cloak x-show="modaldel">
-        <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10">
+        <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10"  @click.away="modaldel = false">
             <div class="flex justify-center text-center">
                 <h6 class="text-lg mb-5 text-center">
                     Hapus Akun

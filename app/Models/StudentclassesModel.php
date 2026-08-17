@@ -17,13 +17,28 @@ class StudentclassesModel
 
     public function getStudentCountPerClasssYearId($academic_year_id = NULL)
     {
+        // $stmt = $this->db->prepare("SELECT 
+        //                                 cr.id classroom_id,
+        //                                 cr.class_name,
+        //                                 ? AS academic_year_id,
+        //                                 COUNT(sc.student_id) AS total_students
+        //                             FROM classrooms cr
+        //                             LEFT JOIN student_classes sc ON cr.id = sc.classroom_id AND sc.academic_year_id = ?
+        //                             GROUP BY cr.id, cr.class_name;");
+        // $stmt->execute([$academic_year_id, $academic_year_id]);
+        // return $stmt->fetchAll();
+
         $stmt = $this->db->prepare("SELECT 
                                         cr.id classroom_id,
                                         cr.class_name,
-                                        ? AS academic_year_id,
+                                        -- Menampilkan ID tahun ajaran yang aktif secara otomatis
+                                        (SELECT id FROM academic_years WHERE id = ? LIMIT 1) AS active_academic_year_id,
+                                        -- Menghitung jumlah siswa hanya untuk tahun ajaran yang aktif
                                         COUNT(sc.student_id) AS total_students
                                     FROM classrooms cr
-                                    LEFT JOIN student_classes sc ON cr.id = sc.classroom_id AND sc.academic_year_id = ?
+                                    LEFT JOIN student_classes sc ON cr.id = sc.classroom_id 
+                                        AND sc.academic_year_id = (SELECT id FROM academic_years WHERE id = ?  LIMIT 1)
+                                    WHERE cr.is_deleted = FALSE
                                     GROUP BY cr.id, cr.class_name;");
         $stmt->execute([$academic_year_id, $academic_year_id]);
         return $stmt->fetchAll();
@@ -59,7 +74,7 @@ class StudentclassesModel
                                     JOIN classrooms cs ON sc.classroom_id=cs.id 
                                     JOIN users u ON sc.student_id=u.id 
                                     JOIN academic_years ay ON sc.academic_year_id=ay.id
-                                    WHERE cs.id=? AND ay.id=?");
+                                    WHERE cs.id=? AND ay.id=? AND u.is_deleted=0");
         $stmt->execute([$classroom_id, $academic_year_id]);
         return $stmt->fetchAll();
     }
