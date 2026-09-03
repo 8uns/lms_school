@@ -108,8 +108,8 @@ Router::add('GET', '/admin/rombel-siswa/del/([0-9]*)/class/([0-9]*)/ay/([0-9]*)'
 
 
 // kurikulum
-Router::add('GET', '/admin/kurikulum-rpp', ComingSoonController::class, 'kurikulum', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage 
-Router::add('GET', '/admin/rekap-data', ComingSoonController::class, 'rekap', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage 
+Router::add('GET', '/admin/kurikulum-rpp', ComingSoonController::class, 'kurikulum', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage
+Router::add('GET', '/admin/rekap-data', ComingSoonController::class, 'rekap', [AuthMiddleware::class,  RoleMiddleware::class . ':Admin']); // menu manage
 
 
 #####// Guru Dashboard

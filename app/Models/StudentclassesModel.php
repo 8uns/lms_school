@@ -17,26 +17,16 @@ class StudentclassesModel
 
     public function getStudentCountPerClasssYearId($academic_year_id = NULL)
     {
-        // $stmt = $this->db->prepare("SELECT 
-        //                                 cr.id classroom_id,
-        //                                 cr.class_name,
-        //                                 ? AS academic_year_id,
-        //                                 COUNT(sc.student_id) AS total_students
-        //                             FROM classrooms cr
-        //                             LEFT JOIN student_classes sc ON cr.id = sc.classroom_id AND sc.academic_year_id = ?
-        //                             GROUP BY cr.id, cr.class_name;");
-        // $stmt->execute([$academic_year_id, $academic_year_id]);
-        // return $stmt->fetchAll();
-
         $stmt = $this->db->prepare("SELECT 
                                         cr.id classroom_id,
                                         cr.class_name,
                                         -- Menampilkan ID tahun ajaran yang aktif secara otomatis
                                         (SELECT id FROM academic_years WHERE id = ? LIMIT 1) AS active_academic_year_id,
                                         -- Menghitung jumlah siswa hanya untuk tahun ajaran yang aktif
-                                        COUNT(sc.student_id) AS total_students
+                                       COUNT(CASE WHEN u.is_deleted = FALSE THEN 1 END) AS total_students
                                     FROM classrooms cr
                                     LEFT JOIN student_classes sc ON cr.id = sc.classroom_id 
+                                    LEFT JOIN users u ON sc.student_id = u.id
                                         AND sc.academic_year_id = (SELECT id FROM academic_years WHERE id = ?  LIMIT 1)
                                     WHERE cr.is_deleted = FALSE
                                     GROUP BY cr.id, cr.class_name;");
@@ -52,11 +42,12 @@ class StudentclassesModel
                                         -- Menampilkan ID tahun ajaran yang aktif secara otomatis
                                         (SELECT id FROM academic_years WHERE is_active = TRUE LIMIT 1) AS active_academic_year_id,
                                         -- Menghitung jumlah siswa hanya untuk tahun ajaran yang aktif
-                                        COUNT(sc.student_id) AS total_students
+                                        COUNT(CASE WHEN u.is_deleted = FALSE THEN 1 END) AS total_students
                                     FROM classrooms cr
                                     LEFT JOIN student_classes sc ON cr.id = sc.classroom_id 
+                                    LEFT JOIN users u ON sc.student_id = u.id
                                         AND sc.academic_year_id = (SELECT id FROM academic_years WHERE is_active = TRUE LIMIT 1)
-                                    WHERE cr.is_deleted = FALSE
+                                    WHERE cr.is_deleted = FALSE 
                                     GROUP BY cr.id, cr.class_name;");
         $stmt->execute();
         return $stmt->fetchAll();

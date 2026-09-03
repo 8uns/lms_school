@@ -88,5 +88,5 @@ class SuperAdminDashboardController extends Controller
         }
     }
 
-    
+
 }

@@ -419,6 +419,9 @@
   .inline-flex {
     display: inline-flex;
   }
+  .table {
+    display: table;
+  }
   .h-2\.5 {
     height: calc(var(--spacing) * 2.5);
   }
