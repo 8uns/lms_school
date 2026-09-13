@@ -10,7 +10,7 @@
                 <div class="">
 
                     <div class="font-bold py-10 px-10 border-b border-gray-200 flex items-center justify-between">
-                        <h6>
+                        <!-- <h6>
                             <select
                                 x-data
                                 @change="if ($event.target.value) window.location.href = $event.target.value">
@@ -18,14 +18,14 @@
                                     <option <?= $selected = $val['id'] == $academic_year_id ? 'selected' :  '' ?> value="<?= base_url('/guru/bank-soal/ay/')  . $val['id'] ?>">Tahun Ajaran <?= $val['year_name'] . ' Semester ' . $val['semester'] ?></option>
                                 <?php endforeach; ?>
                             </select>
-                        </h6>
+                        </h6> -->
 
-                        <div class="relative flex gap-2">
+                        <!-- <div class="relative flex gap-2">
                             <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500  rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
                                 <i class="ri-add-large-line"></i>
                                 Tambah Soal Baru
                             </button>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="px-10 py-5 ">
@@ -37,25 +37,25 @@
                                         <th class="">No</th>
                                         <th class="">Mata Pelajaran</th>
                                         <th class="">Kelas</th>
-                                        <th class="">Tahun Ajaran</th>
+                                        <!-- <th class="">Tahun Ajaran</th> -->
                                         <th class="">Total Soal</th>
                                         <th class="">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    <?php foreach ($data['classsubject'] as $val): ?>
+                                    <?php foreach ($data['question_subject'] as $val): ?>
                                         <tr class="h-15 border-b border-t border-gray-300">
 
                                             <td class="px-4 py-2"><?= $no++; ?></td>
                                             <td class="px-4 py-2"><?= $val['subject_name']; ?></td>
                                             <td class="px-4 py-2"><?= $val['class_name']; ?></td>
-                                            <td class="px-4 py-2"><?= $val['year_name'] . ' ' . $val['semester']; ?></td>
+                                            <!-- <td class="px-4 py-2"><?= $val['year_name'] . ' ' . $val['semester']; ?></td> -->
                                             <td class="px-4 py-2"><?= $val['total_soal']; ?></td>
 
                                             <td class="px-4 py-2 flex justify-center gap-2">
                                                 <div class="w-auto relative">
-                                                    <a href="<?= base_url('/guru/bank-soal/soal') ?>"
+                                                    <a href="<?= base_url('/guru/bank-soal/subject/' . $val['subject_id'] . '/class/' . $val['class_id']) ?>"
                                                         class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 hover:text-green-600 hover:shadow-lg active:scale-[0.98]">
                                                         <i class="ri-eye-fill"></i>
                                                     </a>

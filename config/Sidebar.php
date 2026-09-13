@@ -182,28 +182,6 @@ class Sidebar
                 ],
 
 
-                [
-                    'CategoryLabel' => 'Materi Belajar',
-                ],
-                [
-                    'label' => 'Bahan Ajar',
-                    'url' => '/guru/bahan-ajar',
-                    'icon' => 'ri-info-card-fill',
-                    'sublabel' => false
-                ],
-                [
-                    'label' => 'Diskusi Materi',
-                    'url' => '/guru/diskusi-materi',
-                    'icon' => 'ri-group-3-fill',
-                    'sublabel' => false
-                ],
-                [
-                    'label' => 'Akses Perencanaan',
-                    'url' => '/guru/akses-perencanaan',
-                    'icon' => 'ri-book-read-fill',
-                    'sublabel' => false,
-                ],
-
 
                 [
                     'CategoryLabel' => 'Evaluasi & Asesmen',
@@ -242,6 +220,30 @@ class Sidebar
                     'icon' => 'ri-file-3-fill',
                     'sublabel' => false,
                 ],
+
+                
+                [
+                    'CategoryLabel' => 'Materi Belajar',
+                ],
+                [
+                    'label' => 'Bahan Ajar',
+                    'url' => '/guru/bahan-ajar',
+                    'icon' => 'ri-info-card-fill',
+                    'sublabel' => false
+                ],
+                [
+                    'label' => 'Diskusi Materi',
+                    'url' => '/guru/diskusi-materi',
+                    'icon' => 'ri-group-3-fill',
+                    'sublabel' => false
+                ],
+                [
+                    'label' => 'Akses Perencanaan',
+                    'url' => '/guru/akses-perencanaan',
+                    'icon' => 'ri-book-read-fill',
+                    'sublabel' => false,
+                ],
+
             ],
             // SISWA SIDEBAR
             'Siswa' => [

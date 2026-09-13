@@ -24,6 +24,7 @@ class QuestionBankModel
                                     ay.year_name,
                                     ay.semester,
                                     c.class_name,
+                                    c.id AS class_id,
                                     -- Menghitung jumlah soal yang sesuai dengan Mapel, Kelas, dan Tahun Ajaran
                                     (SELECT COUNT(*) 
                                     FROM question_bank qb 
@@ -57,6 +58,7 @@ class QuestionBankModel
                                     ay.year_name,
                                     ay.semester,
                                     c.class_name,
+                                    c.id AS class_id,
                                     -- Menghitung jumlah soal yang sesuai dengan Mapel, Kelas, dan Tahun Ajaran
                                     (SELECT COUNT(*) 
                                     FROM question_bank qb 

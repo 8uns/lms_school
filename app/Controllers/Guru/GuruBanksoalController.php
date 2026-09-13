@@ -15,7 +15,6 @@ class GuruBanksoalController extends Controller
     private AcademicyearsModel $academicYearsModel;
     private StudentclassesService $studentclassesService;
 
-
     public function __construct()
     {
         parent::__construct();
@@ -35,7 +34,7 @@ class GuruBanksoalController extends Controller
         $data['academic_years'] = $this->academicYearsModel->getAcademicYears();
         $data['academic_year_id'] = $this->studentclassesService->getAcademicyearId($academic_year_id);
 
-        $data['classsubject'] = $this->question_bank_service->getTeacherQuestionStats($academic_year_id);
+        $data['question_subject'] = $this->question_bank_service->getTeacherQuestionStats($academic_year_id);
 
         $this->renderDashboard('/guru/bank-soal', $data);
     }
