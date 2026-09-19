@@ -1,3 +1,9 @@
+
+<?php
+/**
+ * @var array $data
+ */
+?>
 <!-- sidebar start -->
 <!-- 
 $sidebar -> daftar menu sidebar

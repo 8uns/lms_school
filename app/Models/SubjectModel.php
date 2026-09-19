@@ -14,6 +14,15 @@ class SubjectModel
     {
         $this->db = Database::getConnection();
     }
+    
+    // count
+    public function countSubjects(): int
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM subjects WHERE is_deleted = 0");
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return (int)$result['total'];
+    }
 
     // get data
     public function getSubjects()

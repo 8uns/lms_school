@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var array $data
+ */
+?>
+
 <!-- main start -->
 <div class="ml-0 md:ml-72 sm:ml-0 bg-gray-100 min-h-screen"
     x-data="{ 

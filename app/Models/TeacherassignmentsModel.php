@@ -14,8 +14,19 @@ class TeacherassignmentsModel
         $this->db = Database::getConnection();
     }
 
+    public function countAssignedTeachers(): int
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(DISTINCT ta.teacher_id) AS total
+        FROM teacher_assignments ta
+        JOIN academic_years ay ON ta.academic_year_id=ay.id
+        WHERE ay.is_active=1 AND ay.is_deleted=0 ");
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return (int)$result['total'];
+    }
+
     /**
-     * Mengambil semua data penugasan untuk tabel index
+     * Penugasan Guru
      */
     public function getTeacherAssignments()
     {

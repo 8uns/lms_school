@@ -15,6 +15,26 @@ class ClassroomModel
         $this->db = Database::getConnection();
     }
 
+    // count
+    public function countClassrooms(): int
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM classrooms WHERE is_deleted = 0");
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return (int)$result['total'];
+    }
+    public function countClassroomsByGrade(string $grade): int
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(DISTINCT sc.student_id) as total 
+     FROM student_classes sc 
+     JOIN classrooms c ON sc.classroom_id = c.id
+     JOIN academic_years ay ON sc.academic_year_id=ay.id
+     WHERE ay.is_active=1 AND ay.is_deleted=0 AND c.class_name LIKE ? AND c.is_deleted = 0");
+        $stmt->execute([$grade . '%']);
+        $result = $stmt->fetch();
+        return (int)$result['total'];
+    }
+
     // get data
     public function getClass()
     {

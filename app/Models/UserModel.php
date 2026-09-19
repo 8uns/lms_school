@@ -47,7 +47,14 @@ class UserModel
         return $stmt->fetchAll();
     }
 
-
+    // get count data user by role
+    public function countUsersByRole(string $role): int
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM users WHERE role = ? AND is_deleted = FALSE");
+        $stmt->execute([$role]);
+        $result = $stmt->fetch();
+        return (int)$result['total'];
+    }
 
     // create data
     public function create(array $data)
