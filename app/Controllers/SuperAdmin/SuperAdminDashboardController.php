@@ -25,14 +25,14 @@ class SuperAdminDashboardController extends Controller
         $this->view('layouts/header');
         $this->view('layouts/sidebar', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('layouts/dashboard');
+        $this->view('superadmin/dashboard');
         $this->view('layouts/footer');
     }
 
     public function userAdmin(): void
     {
-        $data['page'] = 'User';
-        $data['subpage'] = 'Admin';
+        $data['page'] = 'Akun Admin';
+        $data['subpage'] = false;
         $data['full_name'] = $_SESSION['full_name'];
         $data['role'] = $_SESSION['role'];
         $data['sidebar'] = Sidebar::get()['SuperAdmin'];
@@ -41,6 +41,19 @@ class SuperAdminDashboardController extends Controller
         $this->view('layouts/sidebar', $data);
         $this->view('layouts/navbar', $data);
         $this->view('superadmin/user-admin', $data);
+        $this->view('layouts/footer');
+    }
+    public function logs(): void
+    {
+        $data['page'] = 'Monitoring Log System';
+        $data['subpage'] = false;
+        $data['full_name'] = $_SESSION['full_name'];
+        $data['role'] = $_SESSION['role'];
+        $data['sidebar'] = Sidebar::get()['SuperAdmin'];
+        $this->view('layouts/header');
+        $this->view('layouts/sidebar', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('superadmin/logs', $data);
         $this->view('layouts/footer');
     }
 

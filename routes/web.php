@@ -53,6 +53,7 @@ Router::add('POST', '/administrator/user/admin', SuperAdminDashboardController::
 Router::add('POST', '/administrator/user/admin/([0-9]*)', SuperAdminDashboardController::class, 'updateAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // update admin
 Router::add('POST', '/administrator/user/admin/uppas/([0-9]*)', SuperAdminDashboardController::class, 'updatePassword', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // update password admin
 Router::add('GET', '/administrator/user/admin/del/([0-9]*)', SuperAdminDashboardController::class, 'deleteAdmin', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // delete admin
+Router::add('GET', '/administrator/logs', SuperAdminDashboardController::class, 'logs', [AuthMiddleware::class,  RoleMiddleware::class . ':SuperAdmin']); // menu manage user admin
 
 
 #####// ADMIN DASHBOARD

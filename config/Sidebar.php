@@ -53,7 +53,7 @@ class Sidebar
                 ],
                 [
                     'label' => 'Monitoring Log System',
-                    'url' => '/administrator/user/admin',
+                    'url' => '/administrator/logs',
                     'icon' => 'ri-mac-fill',
                     'sublabel' => false
                 ],
