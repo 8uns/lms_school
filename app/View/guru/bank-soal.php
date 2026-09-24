@@ -1,128 +1,214 @@
+<?php
+
+/**
+ * @var array $data
+ */
+// Hitung total statistik untuk dashboard mini
+$totalMatpel   = count($data['question_subject'] ?? []);
+$totalSeluruhSoal = array_reduce($data['question_subject'] ?? [], function ($carry, $item) {
+    return $carry + (int)($item['total_soal'] ?? 0);
+}, 0);
+?>
+
 <!-- main start -->
-<div class="ml-0 md:ml-72 sm:ml-0 bg-gray-100 min-h-screen"
+<main
+    class="md:ml-72 min-h-screen bg-slate-50 dark:bg-slate-900/90 text-slate-800 dark:text-slate-100 transition-colors duration-300"
     x-data="{ 
-                modaladd: false, 
-                data: {user_id : '', username : '', full_name : ''}
-                 }">
-    <div class="pl-15 pr-15 pb-15 pt-0">
-        <div class="grid grid-cols-1 gap-6">
-            <div class="bg-white rounded-2xl border border-gray-100">
-                <div class="">
+        search: '',
+        modaladd: false, 
+        modaledit: false,
+        modaldel: false,
+        data: {
+            subject_id : '', 
+            class_id : '', 
+            subject_name : '', 
+            class_name : ''
+        }
+    }"
+    @keydown.window.escape="modaladd = false; modaledit = false; modaldel = false;">
 
-                    <div class="font-bold py-10 px-10 border-b border-gray-200 flex items-center justify-between">
-                        <!-- <h6>
-                            <select
-                                x-data
-                                @change="if ($event.target.value) window.location.href = $event.target.value">
-                                <?php foreach ($data['academic_years'] as $val): ?>
-                                    <option <?= $selected = $val['id'] == $academic_year_id ? 'selected' :  '' ?> value="<?= base_url('/guru/bank-soal/ay/')  . $val['id'] ?>">Tahun Ajaran <?= $val['year_name'] . ' Semester ' . $val['semester'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </h6> -->
+    <div class="p-4 sm:p-6 lg:p-8 space-y-6">
 
-                        <!-- <div class="relative flex gap-2">
-                            <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500  rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
-                                <i class="ri-add-large-line"></i>
-                                Tambah Soal Baru
-                            </button>
-                        </div> -->
-                    </div>
+        <!-- DASHBOARD MINI / STATS CARDS -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
 
-                    <div class="px-10 py-5 ">
-
-                        <div class="overflow-x-auto bg-white border border-gray-400 mt-3 rounded-2xl text-gray-600">
-                            <table class="w-full text-center">
-                                <thead>
-                                    <tr class="h-20">
-                                        <th class="">No</th>
-                                        <th class="">Mata Pelajaran</th>
-                                        <th class="">Kelas</th>
-                                        <!-- <th class="">Tahun Ajaran</th> -->
-                                        <th class="">Total Soal</th>
-                                        <th class="">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 1; ?>
-                                    <?php foreach ($data['question_subject'] as $val): ?>
-                                        <tr class="h-15 border-b border-t border-gray-300">
-
-                                            <td class="px-4 py-2"><?= $no++; ?></td>
-                                            <td class="px-4 py-2"><?= $val['subject_name']; ?></td>
-                                            <td class="px-4 py-2"><?= $val['class_name']; ?></td>
-                                            <!-- <td class="px-4 py-2"><?= $val['year_name'] . ' ' . $val['semester']; ?></td> -->
-                                            <td class="px-4 py-2"><?= $val['total_soal']; ?></td>
-
-                                            <td class="px-4 py-2 flex justify-center gap-2">
-                                                <div class="w-auto relative">
-                                                    <a href="<?= base_url('/guru/bank-soal/subject/' . $val['subject_id'] . '/class/' . $val['class_id']) ?>"
-                                                        class="cursor-pointer  w-full rounded-2xl py-3 px-5 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 hover:text-green-600 hover:shadow-lg active:scale-[0.98]">
-                                                        <i class="ri-eye-fill"></i>
-                                                    </a>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
+            <!-- CARD 1: MATA PELAJARAN -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/80 p-5 sm:p-6 flex items-center justify-between shadow-xs transition-colors hover:border-blue-200 dark:hover:border-blue-900/50">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">Mata Pelajaran Aktif</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white">
+                        <?= $totalMatpel ?>
+                    </h3>
+                    <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-2 flex items-center gap-1">
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>Kombinasi Mapel & Rombel</span>
+                    </p>
                 </div>
-
-
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-sky-950/40 text-blue-600 dark:text-sky-400 flex items-center justify-center shrink-0">
+                    <i class="ri-book-read-line text-2xl"></i>
+                </div>
             </div>
+
+            <!-- CARD 2: TOTAL SOAL -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/80 p-5 sm:p-6 flex items-center justify-between shadow-xs transition-colors hover:border-blue-200 dark:hover:border-blue-900/50">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">Total Soal Dibuat</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white">
+                        <?= $totalSeluruhSoal ?>
+                    </h3>
+                    <p class="text-xs text-blue-600 dark:text-sky-400 font-semibold mt-2 flex items-center gap-1">
+                        <i class="ri-file-list-3-line"></i>
+                        <span>Pilihan Ganda & Esai</span>
+                    </p>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <i class="ri-questionnaire-line text-2xl"></i>
+                </div>
+            </div>
+
+            <!-- CARD 3: STATUS BANK SOAL -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/80 p-5 sm:p-6 flex items-center justify-between shadow-xs transition-colors hover:border-blue-200 dark:hover:border-blue-900/50">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">Status Bank Soal</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                        Siap
+                    </h3>
+                    <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-2 flex items-center gap-1">
+                        <i class="ri-folder-shield-2-line"></i>
+                        <span>Terhubung ke Ujian</span>
+                    </p>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                    <i class="ri-folder-keyhole-line text-2xl"></i>
+                </div>
+            </div>
+
         </div>
-    </div>
 
+        <!-- CONTAINER UTAMA -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs transition-colors overflow-hidden">
 
-    <!-- start modal form tambah data -->
-    <div class="fixed h-screen w-screen bg-black/50 left-0 top-0 z-50" x-cloak x-show="modaladd">
-        <form action="<?= base_url('/admin/siswa') ?>" method="post">
-            <div class="bg-white w-1/3 mx-auto mt-40 rounded-2xl p-10" @click.away="modaladd = false">
-                <div class="flex justify-between">
-                    <h6 class="font-bold text-lg mb-5">Tambah Akun Siswa</h6>
-                    <div class="mb-8 relative">
-                        <button @click="modaladd = !modaladd" type="button" class="cursor-pointer bg-gradient-to-r from-slate-500 to-slate-400 w-full rounded-2xl text-white py-2 px-4 hover:from-slate-600 hover:to-slate-500 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
-                            <i class="ri-close-large-fill"></i>
-                        </button>
+            <!-- HEADER SECTION & FILTER PERIODE + SEARCH -->
+            <div class="p-5 sm:p-6 border-b border-slate-100 dark:border-slate-700/60 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+
+                <div class="flex items-center gap-3 w-full lg:w-auto">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-sky-950/40 text-blue-600 dark:text-sky-400 flex items-center justify-center shrink-0">
+                        <i class="ri-user-shared-line text-2xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Filter Periode</span>
+                        <div class="mt-1">
+                            <select
+                                class="w-full sm:w-auto border border-slate-200 dark:border-slate-600 rounded-xl py-2 px-3 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-700/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer transition-colors"
+                                @change="if ($event.target.value) window.location.href = $event.target.value">
+                                <?php if (!empty($data['academic_years'])): ?>
+                                    <?php foreach ($data['academic_years'] as $val): ?>
+                                        <option <?= isset($data['academic_year_id']) && $val['id'] == $data['academic_year_id'] ? 'selected' : '' ?> value="<?= base_url('/admin/bank-soal/') . $val['id'] ?>">
+                                            T.A. <?= $val['year_name'] . ' - ' . $val['semester'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mb-8 relative">
-                    <label for="" class="text-gray-600 text-sm">Nama Lengkap</label>
-                    <input required name="full_name" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="nama lengkap ...">
+                <!-- ACTION CONTROLS: INPUT SEARCH & TOMBOL TAMBAH -->
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+                    <div class="relative w-full sm:w-64">
+                        <i class="ri-search-line absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-base"></i>
+                        <input
+                            type="text"
+                            x-model="search"
+                            placeholder="Cari mapel / kelas..."
+                            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl text-xs sm:text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:bg-white dark:focus:bg-slate-700 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-normal" />
+                    </div>
+
+                   
                 </div>
 
-                <div class="mb-8 relative">
-                    <label for="" class="text-gray-600 text-sm">Username</label>
-                    <input required name="username" type="text" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="username ...">
+            </div>
+
+            <!-- TABLE SECTION -->
+            <div class="p-5 sm:p-6">
+                <div class="overflow-x-auto border border-slate-200/80 dark:border-slate-700/80 rounded-2xl">
+                    <table class="w-full text-center border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50/80 dark:bg-slate-700/40 border-b border-slate-200/80 dark:border-slate-700/80 text-[11px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">
+                                <th class="px-4 py-3.5 w-16">No</th>
+                                <th class="px-6 py-3.5 text-left">Mata Pelajaran</th>
+                                <th class="px-4 py-3.5">Kelas / Rombel</th>
+                                <th class="px-4 py-3.5">Total Soal</th>
+                                <th class="px-4 py-3.5 w-48">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-xs sm:text-sm">
+                            <?php if (!empty($data['question_subject'])): ?>
+                                <?php $no = 1; ?>
+                                <?php foreach ($data['question_subject'] as $val): ?>
+                                    <tr
+                                        class="hover:bg-slate-50/60 dark:hover:bg-slate-700/30 transition-colors"
+                                        x-show="search === '' || 
+                                                '<?= strtolower(addslashes($val['subject_name'])) ?>'.includes(search.toLowerCase()) || 
+                                                '<?= strtolower(addslashes($val['class_name'])) ?>'.includes(search.toLowerCase())">
+                                        
+                                        <td class="px-4 py-4 font-medium text-slate-400 dark:text-slate-500"><?= $no++; ?></td>
+                                        
+                                        <td class="px-6 py-4 text-left font-bold text-slate-800 dark:text-white">
+                                            <?= htmlspecialchars($val['subject_name']); ?>
+                                        </td>
+                                        
+                                        <td class="px-4 py-4">
+                                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 dark:bg-sky-950/40 text-blue-600 dark:text-sky-400 border border-blue-100 dark:border-sky-900/50">
+                                                Kelas <?= htmlspecialchars($val['class_name']); ?>
+                                            </span>
+                                        </td>
+
+                                        <td class="px-4 py-4 font-medium">
+                                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">
+                                                <?= htmlspecialchars($val['total_soal']); ?> Soal
+                                            </span>
+                                        </td>
+
+                                        <td class="px-4 py-4">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <!-- Tombol Kelola Soal -->
+                                                <a href="<?= base_url('/guru/bank-soal/subject/' . $val['subject_id'] . '/class/' . $val['class_id']) ?>"
+                                                    title="Kelola Soal"
+                                                    class="cursor-pointer px-2.5 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-sky-400 hover:bg-blue-50 dark:hover:bg-sky-950/30 active:scale-95 transition-all flex items-center gap-1 font-semibold text-xs">
+                                                    <i class="ri-eye-line text-base"></i>
+                                                    <span>Kelola</span>
+                                                </a>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="px-4 py-12 text-slate-400 dark:text-slate-500 text-center">
+                                        <i class="ri-inbox-line text-4xl block mb-2 opacity-60"></i>
+                                        Belum ada data bank soal untuk mata pelajaran Anda.
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="mb-15 relative">
-                    <label for="" class="text-gray-600 text-sm">Password</label>
-                    <input required name="password" type="password" class="border text-gray-700 border-gray-400 bg-white w-full rounded-2xl py-3 px-10 text-sm" placeholder="••••••••">
-                </div>
-
-                <div class="mb-2 relative">
-                    <button type="submit" class="cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 w-full rounded-2xl text-white py-3 px-5 hover:from-blue-700 hover:to-indigo-600 transition-colors">
-                        Tambahkan
-                    </button>
+                <!-- FOOTER INFO -->
+                <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 dark:text-slate-500">
+                    <span>Menampilkan seluruh mata pelajaran & kelas yang aktif</span>
+                    <span class="font-semibold text-slate-500 dark:text-slate-400">Total <?= $totalMatpel ?> Kelas Terdaftar</span>
                 </div>
             </div>
-        </form>
+
+        </div>
+
     </div>
-    <!-- end modal form tambah data-->
+
+   
 
 
-</div>
+</main>
 <!-- main end -->

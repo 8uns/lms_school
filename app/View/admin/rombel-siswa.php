@@ -88,7 +88,7 @@ $avgStudents = $totalClasses > 0 ? round($totalStudents / $totalClasses) : 0;
                                 <?php if (!empty($data['academic_years'])): ?>
                                     <?php foreach ($data['academic_years'] as $val): ?>
                                         <option <?= isset($data['academic_year_id']) && $val['id'] == $data['academic_year_id'] ? 'selected' : '' ?> value="<?= base_url('/admin/rombel-siswa/') . $val['id'] ?>">
-                                            Tahun Ajaran <?= $val['year_name'] . ' - Semester ' . $val['semester'] ?>
+                                            T.A. <?= $val['year_name'] . ' - ' . $val['semester'] ?>
                                         </option>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

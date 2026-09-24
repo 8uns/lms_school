@@ -101,7 +101,7 @@
                                 @change="if ($event.target.value) window.location.href = $event.target.value">
                                 <?php foreach ($data['academic_years'] as $val): ?>
                                     <option <?= $val['id'] == $data['academic_year_id'] ? 'selected' : '' ?> value="<?= base_url('/admin/penugasan-guru/') . $val['id'] ?>">
-                                        Tahun Ajaran <?= $val['year_name'] . ' - Semester ' . $val['semester'] ?>
+                                        T.A. <?= $val['year_name'] . ' - ' . $val['semester'] ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
